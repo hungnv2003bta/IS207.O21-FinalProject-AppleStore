@@ -40,13 +40,13 @@ const Footer = () => {
           <div className="sb__footer-links-div">
             <h4>SẢN PHẨM</h4>
             <a href="/macs">
-              <p>Macs</p>
+              <p>Macbook</p>
             </a>
             <a href="/iphones">
-              <p>Iphone</p>
+              <p>iPhone</p>
             </a>
             <a href="/ipads">
-              <p>Ipad</p>
+              <p>iPad</p>
             </a>
           </div>
 
