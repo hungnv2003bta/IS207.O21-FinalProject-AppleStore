@@ -86,7 +86,7 @@ const Footer = () => {
             </p>
           </div>
           <div class="sb__footer-below-links">
-            <a href="!#"><div><p>Tearm & Conditions</p></div></a>
+            <a href="!#"><div><p>Terms & Conditions</p></div></a>
             <a href="!#"><div><p>Privacy</p></div></a>
             <a href="!#"><div><p>Security</p></div></a>
             <a href="!#"><div><p>Cookie Delaration</p></div></a>
