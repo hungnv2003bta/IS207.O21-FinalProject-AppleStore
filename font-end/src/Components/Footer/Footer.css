@@ -12,10 +12,10 @@
   background-color:#edebeb
 }
 
-.sb__footer{
+/* .sb__footer{
   display:flex;
   flex-direction: column;
-}
+} */
 
 .sb__footer-links {
   display:flex;
