@@ -1,7 +1,7 @@
-import p1_img from "./iphone15pro.jpeg";
-import p2_img from "./ipadprom2.jpeg";
-import p3_img from "./macbook_air_2024.jpeg";
-import p4_img from "./macbookpro2024.jpeg"
+import p1_img from "./image/iphone15pro.jpeg";
+import p2_img from "./image/ipadprom2.jpeg";
+import p3_img from "./image/macbook_air_2024.jpeg";
+import p4_img from "./image/macbookpro2024.jpeg"
 
 let new_collections = [
   {

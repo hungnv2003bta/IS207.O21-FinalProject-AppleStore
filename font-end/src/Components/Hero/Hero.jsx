@@ -1,7 +1,7 @@
 import React from 'react'
 import './Hero.css'
-import hero_image from '../Assets/ipadwifi.png'
-import party_horn_icon from '../Assets/party_horn_icon.png'
+import hero_image from '../Assets/image/ipadwifi.png'
+import party_horn_icon from '../Assets/image/party_horn_icon.png'
 import all_product from '../Assets/all_product'
 
 const Hero = () => {
