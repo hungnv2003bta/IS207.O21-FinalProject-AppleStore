@@ -1,0 +1,135 @@
+#footer-logo{
+    color:rgb(202, 60, 105);
+    font-size: 48px;
+    font-weight: 900;
+}
+
+ .section__padding {
+    padding:4rem 4rem;
+ }
+
+ .footer {
+    background-color:#dedede
+ }
+
+ .sb__footer{
+    display:flex;
+    flex-direction: column;
+ }
+
+ .sb__footer-links {
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width:100%;
+    text-align: left;
+    margin-bottom:2rem;
+ }
+
+ .sb__footer-links-div { 
+    width: 150px;
+    margin:1rem;
+    display:flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    color:#333;
+ }
+
+a{
+    color: #333;
+    text-decoration: none;
+}
+
+.socialmedia {
+    display:flex;
+    flex-direction: row;
+}
+
+.sb__footer-links-div h4{
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 0.9rem;
+}
+
+.sb__footer-links-div p{
+    font-size: 14px;
+    line-height: 17px;
+    margin: 0.5rem 0;
+    cursor:pointer;
+}
+
+.sb__footer-below{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top:0.2rem;
+}
+
+.sb__footer-below-links{
+    display:flex;
+    flex-direction: row;
+}
+
+.sb__footer-below-links p{
+    font-size: 15px;
+    line-height: 17px;
+    margin-left:2rem;
+    color:#333;
+    font-weight: 600;
+}
+
+hr {
+    color:rgb(23, 6, 12);
+    width:100%;
+}
+
+.sb__footer-copyright p{
+    font-size: 15px;
+    line-height: 17px;
+    margin-left:2rem;
+    color:#333;
+    font-weight: 600;
+}
+
+@media screen and (max-width:850px) {
+    .sb__footer-heading h1 {
+        font-size:46px;
+        line-height: 52px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .sb__footer-heading h1 {
+        font-size:36px;
+        line-height: 44px;
+    }
+    .sb__footer-links div {
+        margin: 1rem 0;
+    }
+    .sb__footer-btn p{
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .sb__footer-below {
+        flex-direction:column;
+        justify-content: left;
+    }
+    .sb__footer-below-links p {
+        margin-left: 0rem;
+        margin-top: 1rem;
+    }
+}
+
+@media screen and(max-width:400px) {
+    .sb__footer-heading h1 {
+        font-size:29px;
+        line-height: 40px;
+    }
+    .sb__footer-below {
+        flex-direction:column;
+        justify-content: left;
+    }
+}
