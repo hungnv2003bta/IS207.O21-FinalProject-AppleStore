@@ -77,4 +77,19 @@
   font-size: 14px;
   background-color: #f1356d;
 }
-
+.nav-login{
+  width: 100px;
+  height: 35px;
+  outline: none;
+  border: 1px solid #7a7a7a;
+  border-radius: 75px;
+  color: #515151;
+  font-size: 20px;
+}
+.nav-login button{
+  margin-left: 8px;
+  margin-top: 9px;
+  font-size: 14px;
+  align-items: center;
+  color: rgb(0, 0, 0); 
+}
