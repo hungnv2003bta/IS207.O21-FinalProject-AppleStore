@@ -7,9 +7,9 @@ import Product from './Pages/Product';
 import Cart from './Pages/Cart';
 import LoginSignup from './Pages/LoginSignup';
 import Search from './Pages/Search';
-import iphone_banner from './Components/Assets/iphone_banner.jpg'
-import mac_banner from './Components/Assets/mac_banner.jpg'
-import ipad_banner from './Components/Assets/ipad-banner.jpg'
+import iphone_banner from './Components/Assets/image/iphone_banner.jpg'
+import mac_banner from './Components/Assets/image/mac_banner.jpg'
+import ipad_banner from './Components/Assets/image/ipad-banner.jpg'
 import Footer from './Components/Footer/Footer';
 
 function App() {

@@ -1,4 +1,4 @@
-import p1_img from "./iphone15promax.jpeg";
+import p1_img from "./image/iphone15promax.jpeg";
 // import p2_img from "./ipadwifi.png";
 
 let data_product = [
