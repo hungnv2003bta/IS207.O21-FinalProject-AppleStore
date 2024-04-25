@@ -23,7 +23,7 @@
   font-size: 18px;
   font-weight: 400;
 }
-.cart-icon{
+.icon{
   height: 25px;
 }
 .bx-search{
@@ -43,13 +43,13 @@
   border-radius: 10px;
   background-color: #f1356d;
 }
-.nav-search-cart{
+.nav-search-cart-login{
   display: flex;
   align-items: center;
   gap: 40px;
   cursor: pointer;
 }
-.nav-search-cart button{
+.nav-search-cart-login button{
   background-color: white;
   border: none;
   cursor: pointer;
@@ -57,11 +57,11 @@
 .nav-menu li:hover{
   color: #f1356d;
 }
-.nav-search-cart .bx-search:hover{
+.nav-search-cart-login .bx-search:hover{
   color: #f1356d;
   width: 27px;
 }
-.cart-icon:hover{
+.icon:hover{
   background-color: #f1356d;
   width: 27px;
 }
