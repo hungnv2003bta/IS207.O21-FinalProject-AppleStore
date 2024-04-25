@@ -13,8 +13,10 @@
 
 // export default Footer
 
-import React from 'react'
-import './Footer.css'
+import React from 'react';
+import './Footer.css';
+// import fb from "../Assets/fb.png";
+// import tiktok from "../Assets/tiktok.png";
 
 
 const Footer = () => {
@@ -24,11 +26,15 @@ const Footer = () => {
         <div className="sb__footer-links">
           <div className="sb__footer-links-div">
             <a href="!#">
-            <p id="footer-logo">6Tao</p>
+            {/* <p id="footer-logo">6Tao</p> */}
             </a>
+            <h4>TỔNG ĐÀI</h4>
+            <p>Mua hàng: 1900-1814 (7h30 - 22h00)</p>
+            <p>Khiếu nại: 1900-1816 (7h30 - 22h00)</p>
+            <p>Bảo hành: 1900-1820 (7h30 - 22h00)</p>
             {/* <div className="socialmedia">
               <p><img src={fb} alt =""/></p>
-              <p><img src={insta} alt =""/></p>
+              <p><img src={tiktok} alt =""/></p>
             </div> */}
           </div>
           <div className="sb__footer-links-div">
@@ -43,18 +49,7 @@ const Footer = () => {
               <p>Ipad</p>
             </a>
           </div>
-          <div className="sb__footer-links-div">
-            <h4>6TAO</h4>
-            <a href="!#">
-              <p>Liên hệ</p>
-            </a>
-            <a href="!#">
-              <p>Tuyển dụng</p>
-            </a>
-            <a href="!#">
-              <p>Thông tin chung</p>
-            </a>
-          </div>
+
           <div className="sb__footer-links-div">
             <h4>HỖ TRỢ KH</h4>
             <a href="!#">
@@ -67,6 +62,19 @@ const Footer = () => {
               <p>Hướng dẫn mua hàng online</p>
             </a>
           </div>
+          <div className="sb__footer-links-div">
+            <h4>6TAO</h4>
+            {/* <a href="!#">
+              <p>Liên hệ</p>
+            </a> */}
+            <a href="!#">
+              <p>Tuyển dụng</p>
+            </a>
+            <a href="!#">
+              <p>Thông tin chung</p>
+            </a>
+          </div>
+          
         </div>
     
         <hr></hr>
