@@ -12,12 +12,11 @@ const Login = () => {
         </div >
         <div className='login-footer'>
           <p className='login-dn'>Quên mật khẩu?</p>
-          <p className='login-dk'>Chưa có tài khoản?<Link to='signup'><span>Đăng ký tại đây</span></Link></p>
+          <p className='login-dk'>Chưa có tài khoản?<Link to='/signup'><span>Đăng ký tại đây</span></Link></p>
         </div>  
         <button>Đăng Nhập</button>
       </div>
     </div>
   )
 }
-
 export default Login

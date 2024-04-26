@@ -6,6 +6,7 @@ import ShopCategory from './Pages/ShopCategory';
 import Product from './Pages/Product';
 import Cart from './Pages/Cart';
 import Login from './Pages/Login';
+import Signup from './Pages/Signup';
 import Search from './Pages/Search';
 import iphone_banner from './Components/Assets/iphone_banner.jpg'
 import mac_banner from './Components/Assets/mac_banner.jpg'
@@ -28,6 +29,7 @@ function App() {
         <Route path='/Search' element={<Search/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/signup' element={<Signup/>}/>
       </Routes>
       <Footer/>
       </BrowserRouter>

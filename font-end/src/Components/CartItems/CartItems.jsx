@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import './CartItems.css'
-import {ShopContext } from '../../Context/ShopContext'
+import { ShopContext } from '../../Context/ShopContext'
 import remove_icon from '../Assets/remove_icon.png'
 
 const CarItems = () => {
@@ -30,10 +30,10 @@ const CarItems = () => {
                 {/* <img src={remove_icon} onClick={()=> {removeFromCart(e.id)}} alt="" /> */}
                 <i class='bx bx-trash' onClick={()=> {removeFromCart(e.id)}}></i>
               </div>
+              <hr/> 
             </div>
           }
         })}
-        <hr/>
       </div>
     </div>
   )
