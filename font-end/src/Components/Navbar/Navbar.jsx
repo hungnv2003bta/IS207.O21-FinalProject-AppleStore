@@ -21,10 +21,11 @@ const Navbar = () => {
       </ul>
       <div className="nav-search-cart">
         <Link to='/search'><button><i className='bx bx-search' /></button></Link>
+        <div className='nav-login'><Link to='/login'><button>Đăng Nhập</button></Link></div>
         <Link to='/cart'><img src={cart_icon} alt="cart-icon" className="cart-icon"/></Link>
         <div className="nav-cart-count">0</div>
       </div>
-    </div>  
+    </div>
   )
 }
 
