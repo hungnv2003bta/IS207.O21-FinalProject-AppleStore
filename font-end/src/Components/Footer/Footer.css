@@ -5,11 +5,11 @@
 }
 
 .section__padding {
-  padding:4rem 4rem;
+  padding:1rem 2rem;
 }
 
 .footer {
-  background-color:#dedede
+  background-color:#edebeb
 }
 
 .sb__footer{
@@ -29,7 +29,7 @@
 }
 
 .sb__footer-links-div { 
-  width: 150px;
+  width:max-content;
   margin:1rem;
   display:flex;
   justify-content: flex-start;
@@ -91,6 +91,15 @@ hr {
   margin-left:2rem;
   color:#333;
   font-weight: 600;
+}
+.socialmedia {
+  display:flex;
+  flex-direction: row;
+}
+
+.socialmedia img {
+  width:2rem;
+  height:2rem;
 }
 
 @media screen and (max-width:850px) {
