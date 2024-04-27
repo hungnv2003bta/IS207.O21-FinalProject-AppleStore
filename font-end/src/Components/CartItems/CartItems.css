@@ -17,11 +17,17 @@
   font-weight: 600;
 }
 .cartitems-format{
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  gap: 75px;
+  padding: 20px 0px;
   font-size: 17px;
   font-weight: 500;
 }
-.carticon-product-icon{
-  height: 62px;
+img{
+  height: 70px;
+  width: 50px;
 }
 .cartitems-remove-icon{
   width: 15px;
