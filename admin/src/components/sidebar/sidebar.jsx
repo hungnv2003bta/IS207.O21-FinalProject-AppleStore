@@ -1,5 +1,7 @@
 import "./sidebar.css"
 
+const amount = 100;
+
 const sidebar = () => {
     return (
         <div className='sidebar'>
