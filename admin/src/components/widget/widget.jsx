@@ -78,10 +78,10 @@ const Widget = ({type}) => {
   }
 
   return (
-<div className="widget">
+    <div className="widget">
       <div className="left">
         <span className="title">{data.title}</span>
-        <span className="counter">
+        <span className="counternumber">
           {data.isMoney && "$"} {amount}
         </span>
         <span className="link">{data.link}</span>

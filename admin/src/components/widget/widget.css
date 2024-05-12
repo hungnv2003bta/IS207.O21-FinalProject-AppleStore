@@ -23,11 +23,10 @@
     color: rgb(160, 160, 160);
   }
   
-  .widget .left .counter,
-  .widget .right .counter {
+  .widget .left .counternumber,
+  .widget .right .counternumber {
     font-size: 28px;
     font-weight: 300;
-    color: black;
   }
   
   .widget .left .link,
