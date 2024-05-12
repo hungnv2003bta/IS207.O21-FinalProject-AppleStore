@@ -1,13 +1,15 @@
-import sidebar from "../../components/sidebar/sidebar";
+
+import Navbar from "../../components/navbar/navbar";
 import "./home.css";
 
-const home = () => {
+const Home = () => {
   return (
     <div className="home">
-      <sidebar />
-      <div className="homeContainer">Container</div>
+          <div className="homeContainer">
+              <Navbar />
+      </div>
     </div>
   );
 };
 
-export default home;
+export default Home;
