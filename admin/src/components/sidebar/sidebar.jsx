@@ -1,6 +1,6 @@
 import "./sidebar.css"
 
-const sidebar = () => {
+const Sidebar = () => {
     return (
         <div className='sidebar'>
             <div className="top">
@@ -27,4 +27,4 @@ const sidebar = () => {
     )
 }
 
-export default sidebar
+export default Sidebar
