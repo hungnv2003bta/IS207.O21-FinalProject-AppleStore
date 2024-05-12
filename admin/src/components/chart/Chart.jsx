@@ -2,8 +2,8 @@ import React from 'react'
 
 const Chart = () => {
   return (
-    <div>Chart</div>
+    <div>C</div>
   )
 }
 
-export default Chart
+export default Chart;
