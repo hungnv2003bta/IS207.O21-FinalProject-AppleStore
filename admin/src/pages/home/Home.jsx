@@ -1,8 +1,12 @@
+import Navbar from "../../components/navbar/navbar";
 import "./home.css";
+
 const Home = () => {
   return (
     <div className="home">
-      ladd
+          <div className="homeContainer">
+              <Navbar />
+      </div>
     </div>
   );
 };
