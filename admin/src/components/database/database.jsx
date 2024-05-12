@@ -2,7 +2,7 @@ import React from 'react'
 
 const Database = () => {
   return (
-    <div>database</div>
+    <div>Database</div>
   )
 }
 

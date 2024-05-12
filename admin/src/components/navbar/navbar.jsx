@@ -7,7 +7,6 @@ import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import { useContext } from "react";
 
 const Navbar = () => {
-    const amount = 100;
   return (
       <div className='navbar'>
           <div className="wrapper">
