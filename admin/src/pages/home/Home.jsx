@@ -1,7 +1,10 @@
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import "./home.css";
 import Widget from "../../components/widget/Widget";
+import Feature from "../../components/feature/Feature";
+import Chart from "../../components/chart/Chart";
+
+import "./home.css";
 
 const Home = () => {
   return (
@@ -15,7 +18,11 @@ const Home = () => {
           <Widget type="earning" />
           <Widget type="balance" />
         </div>
+        <div className="charts">
+          <Feature />
+          <Chart />
         </div>
+      </div>
       </div>
   )
 }
