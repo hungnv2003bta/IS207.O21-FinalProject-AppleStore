@@ -16,7 +16,6 @@ const List = () => {
       
       order_date: "1 March",
       total_emoney: 34000000,
-      method: "Cash on Delivery",
       status: "Approved",
     },
     
@@ -27,7 +26,6 @@ const List = () => {
       
       order_date: "1 March",
       total_emoney: 34000000,
-      method: "Cash on Delivery",
       status: "Approved",
     },
     {
@@ -36,7 +34,6 @@ const List = () => {
       img: "../pic/iphone11pro.jpg",
       order_date: "1 March",
       total_emoney: 34000000,
-      method: "Cash on Delivery",
       status: "Approved",
     },
 
@@ -47,7 +44,6 @@ const List = () => {
       
       order_date: "1 March",
       total_emoney: 34000000,
-      method: "Cash on Delivery",
       status: "Approved",
     }
 
@@ -61,13 +57,11 @@ const List = () => {
     <Table sx={{ minWidth: 650 }} aria-label="simple table">
       <TableHead>
         <TableRow>
-          <TableCell align="tableCell">Mã đơn hàng</TableCell>
+          <TableCell align="tableCell">Mã giao dịch</TableCell>
           <TableCell align="tableCell">Sản phẩm</TableCell>
-          <TableCell align="tableCell">Mã đơn hàng</TableCell>
-          <TableCell align="tableCell">Mã đơn hàng</TableCell>
-          <TableCell align="tableCell">Mã đơn hàng</TableCell>
-          <TableCell align="tableCell">Mã đơn hàng</TableCell>
-          <TableCell align="tableCell">Mã đơn hàng</TableCell>
+          <TableCell align="tableCell">Ngày</TableCell>
+          <TableCell align="tableCell">Tổng tiền</TableCell>
+          <TableCell align="tableCell">Trạng thái</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
