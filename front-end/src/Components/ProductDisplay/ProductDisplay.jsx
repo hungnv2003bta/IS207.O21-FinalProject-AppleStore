@@ -21,25 +21,14 @@ const ProductDisplay = (props) => {
         </div>
       </div>
       <div className="productdisplay-right">
-        <h1>{product.name}</h1>
-        {/* <div className="productdisplay-right star">
-          <img src={star_icon} alt=""/>
-          <img src={star_icon}  alt=""/>
-          <img src={star_icon}  alt=""/>
-          <img src={star_icon}  alt=""/>
-          <img src={start_dull_icon} alt=""/>
-          <p>(122)</p>
-        </div> */}
+        <h2>{product.name}</h2>
         <div className="productdisplay-right-prices">
-          <div className="productdisplay-right-price-old">
-            {product.old_price} VNĐ
-          </div>
           <div className="productdisplay-right-price-new">
-            {product.new_price} VNĐ
+            {product.new_price}
           </div>
-        </div>
-        <div className="productdisplay-right-description">
-          Mô tả sản phẩm ở đây !
+          <div className="productdisplay-right-price-old">
+            {product.old_price}
+          </div>
         </div>
         <div className="productdisplay-right-color">
           <h1>Chọn màu</h1>
