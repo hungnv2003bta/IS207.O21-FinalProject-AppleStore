@@ -1,11 +1,13 @@
 import React from 'react'
 import './Hero.css'
-import hero_image from '../Assets/Banner/hero-banner.png'
-import party_horn_icon from '../Assets/Icon/party_horn_icon.png'
+import hero_image from '../Assets/ipadwifi.png'
+import party_horn_icon from '../Assets/party_horn_icon.png'
 import all_product from '../Assets/all_product'
 
 const Hero = () => {
   const product = all_product.find(item => item.image === hero_image);
+
+  // Extract necessary information from the product
   const productName = product ? product.name : 'Product Not Found';
   const productNewPrice = product ? product.new_price : 'Price Not Available';
   const productOldPrice = product ? product.old_price : 'Price Not Available';

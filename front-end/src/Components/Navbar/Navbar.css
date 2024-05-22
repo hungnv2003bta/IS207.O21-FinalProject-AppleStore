@@ -59,11 +59,11 @@
   color: #f1356d;
 }
 .nav-search-cart .bx-search:hover{
-  color: #706f6f;
+  color: #f1356d;
   width: 27px;
 }
 .cart-icon:hover{
-  background-color: #e0dddd;
+  background-color: #f1356d;
   width: 27px;
 }
 .nav-cart-count{

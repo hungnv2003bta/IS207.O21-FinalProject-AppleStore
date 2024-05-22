@@ -2,17 +2,15 @@ import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Shop from './Pages/Shop' ;
-import ShopCategoryIphone from './Pages/ShopCategoryIphone';
-import ShopCategoryIpad from './Pages/ShopCategoryIpad';
-import ShopCategoryMac from './Pages/ShopCategoryMac';
+import ShopCategory from './Pages/ShopCategory';
 import Product from './Pages/Product';
 import Cart from './Pages/Cart';
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import Search from './Pages/Search';
-import iphone_banner from './Components/Assets/Banner/iphone-banner.webp'
-import mac_banner from './Components/Assets/Banner/mac-banner.jpeg'
-import ipad_banner from './Components/Assets/Banner/ipad-banner.jpeg'
+import iphone_banner from './Components/Assets/iphone_banner.jpg'
+import mac_banner from './Components/Assets/mac_banner.jpg'
+import ipad_banner from './Components/Assets/ipad-banner.jpg'
 import Footer from './Components/Footer/Footer';
 
 function App() {
@@ -22,9 +20,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Shop/>}/>
-        <Route path='/Mac' element={<ShopCategoryMac banner={mac_banner} category="Mac"/>}/>
-        <Route path='/iPhone' element={<ShopCategoryIphone banner={iphone_banner} category="iPhone"/>}/>
-        <Route path='/iPad' element={<ShopCategoryIpad banner={ipad_banner} category="iPad"/>}/>
+        <Route path='/macs' element={<ShopCategory banner={mac_banner} category="macs"/>}/>
+        <Route path='/iphones' element={<ShopCategory banner={iphone_banner} category="iphones"/>}/>
+        <Route path='/ipads' element={<ShopCategory banner={ipad_banner} category="ipads"/>}/>
         <Route path="product" element={<Product/>}>
           <Route path=":productId" element={<Product/>}/>
         </Route>

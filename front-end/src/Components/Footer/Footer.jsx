@@ -7,6 +7,9 @@ const Footer = () => {
       <div className="sb__footer section__padding">
         <div className="sb__footer-links">
           <div className="sb__footer-links-div">
+            <a href="!#">
+            {/* <p id="footer-logo">6Tao</p> */}
+            </a>
             <h4>TỔNG ĐÀI</h4>
             <p>Mua hàng: 1900-1814 (7h30 - 22h00)</p>
             <p>Khiếu nại: 1900-1816 (7h30 - 22h00)</p>
