@@ -5,12 +5,13 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 
-const Widget = ({type}) => {
+const Widget = ({ type }) => {
   let data;
-  
-  //temporary before connect DB
-  const amount =100;
+
+  //temporary
+  const amount = 100;
   const diff = 20;
+
   switch (type) {
     case "user":
       data = {
@@ -94,6 +95,7 @@ const Widget = ({type}) => {
         {data.icon}
       </div>
     </div>
-  ) }
+  );
+};
 
-export default Widget
+export default Widget;
