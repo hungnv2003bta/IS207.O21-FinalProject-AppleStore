@@ -12,10 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('feedback', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->increments('id');
+            $table->integer('product_id');
+            $table->integer('user_id');
             $table->string('subject_name', 200);
             $table->string('note', 500);
         });

@@ -4,26 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\users;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = users::all();
         return response()->json($users);
     }
 
-    public function create(Request $request)
+    public function register(Request $req)
     {
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->save();
-        return response()->json($user);
-    }
+        $user = new users();
+        $user->name = $req->input('name');
+        $user->email = $req->input('email');
+        $user->phone_number = $req->input('phone_number');
+        $user->address= $req->input('address');
+        $user->password = Hash::make($req->input('password'));
+        $user->role_id = $req->input('role_id');
 
-    function register(Request $req){
-        return $req->input(); 
+        $user->save();
+        return $user;
     }
 }

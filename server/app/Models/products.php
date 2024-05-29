@@ -14,7 +14,7 @@ class product extends Model
     protected $filltable = ['category_id', 'color', 'memory', 'RAM', 'chip', 'display_size', 'display_technology', 'battery', 'front_facing_camera', 'rear_facing_camera', 'price', 'discount', 'product_image', 'description'];
 
     public function category()
-    {
+    {  
         return $this->belongsTo(category::class);
     }
     public function product_items()
