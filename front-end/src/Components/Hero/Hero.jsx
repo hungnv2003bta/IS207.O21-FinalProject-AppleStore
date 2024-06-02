@@ -3,6 +3,7 @@ import './Hero.css'
 import hero_image from '../Assets/Banner/hero-banner.png'
 import party_horn_icon from '../Assets/Icon/party_horn_icon.png'
 import all_product from '../Assets/all_product'
+import products from '../Assets/Banner/hero_banner_sp.png'
 
 const Hero = () => {
   const product = all_product.find(item => item.image === hero_image);
@@ -29,7 +30,7 @@ const Hero = () => {
       </div>
 
       <div className="hero-right">
-        <img src={hero_image} alt="" />
+        <img src={products} alt="" />
         <div className="product-info">
           {product &&
             <div>

@@ -1,6 +1,8 @@
 .hero{
-  height: 100vh;
+  height: 80vh;
   background: linear-gradient(180deg, #f9c9dc, #e1ffea22 60%);
+  /* background: #FFF; */
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   display: flex;
 }
 .hero-left{
@@ -78,6 +80,6 @@
   text-decoration: line-through;
 }
 .hero-right img {
-  width:400px; 
-  height: auto; 
+  width:600px; 
+  height: 400px; 
 }

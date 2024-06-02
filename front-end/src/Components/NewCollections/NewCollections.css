@@ -1,7 +1,7 @@
 .new-collections{
   align-items: center;
   gap: 10px;
-  height: 90vh;
+  height: 90ch;
 }
 .new-collections h1{
   color: #171717;
@@ -29,8 +29,8 @@
 }
 .collections-and-arrows button{
   display: relative;
-  background-color: #d64671;
-  color: rgb(255, 255, 255);
+  background-color: #fff;
+  color: #f9c9dc;
   border: none;
   border-radius: 50%;
   width: 50px;
@@ -41,6 +41,7 @@
   left: 50%;
   transform: translate(-30%, -50%);
   margin: 0 50px;
+  text-align: center;
 }
 .slick-slide > div{
   margin: 0 10px;
