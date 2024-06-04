@@ -1,41 +1,58 @@
-import "./sidebar.css"
+import "./sidebar.css";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import StoreIcon from "@mui/icons-material/Store";
-import InsertChartIcon from "@mui/icons-material/InsertChart";
-import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"; // For dropdown
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
-import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from 'react';
+
 const Sidebar = () => {
+    const navigate = useNavigate();
+    const [isProductsOpen, setIsProductsOpen] = useState(false); // Manage dropdown state
+
+    const handleLogout = () => {
+        localStorage.removeItem("user-info");
+        navigate('/login');
+    };
+
     return (
         <div className='sidebar'>
             <div className="top">
-                <Link to="/" style={{ textDecoration: "none"}}>
-                <span className="logo">Admin</span>
+                <Link to="/home" style={{ textDecoration: "none"}}>
+                    <span className="logo">Admin</span>
                 </Link>
             </div>
             <div className="center">
                 <ul>
                     <p className="title">MAIN</p>
                     <li>
-                        <DashboardIcon className="icon"/>
-                        <span>Dashboard</span>
+                        <Link to="/home" style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}>
+                            <DashboardIcon className="icon" />
+                            <span>Dashboard</span>
+                        </Link>
                     </li>
                     <p className="title">LISTS</p>
                     <li>
-                        <PersonOutlineIcon className="icon"/>
-                        <span>Users</span>
+                        <Link to="/users" style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}>
+                            <PersonOutlineIcon className="icon"/>
+                            <span>Users</span>
+                        </Link>
                     </li>
-                    <li>
+                    <li onClick={() => setIsProductsOpen(!isProductsOpen)} style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
                         <StoreIcon className="icon"/>
                         <span>Products</span>
+                        <ExpandMoreIcon className="icon-expand"/>
                     </li>
+                    {isProductsOpen && (
+                        <div style={{ display: "block", paddingLeft: "20px" }}>
+                            <Link to="/products" className="dropdown-item">Management</Link>
+                            <Link to="/add-product" className="dropdown-item">Add Product</Link>
+                        </div>
+                    )}
                     <li>
                         <CreditCardIcon className="icon"/>
                         <span>Orders</span>
@@ -44,41 +61,19 @@ const Sidebar = () => {
                         <LocalShippingIcon className="icon"/>
                         <span>Delivery</span>
                     </li>
-                    <p className="title">USEFUL</p>
-                    <li>
-                        <InsertChartIcon className="icon"/>
-                        <span>Stats</span>
-                    </li>
-                    <li>
-                        <NotificationsNoneIcon className="icon"/>
-                        <span>Notifications</span>
-                    </li>
-                    <p className="title">SERVICE</p>
-                    <li>
-                        <SettingsSystemDaydreamOutlinedIcon className="icon"/>
-                        <span>Systems</span>
-                    </li>
-                    <li>
-                        <PsychologyOutlinedIcon className="icon"/>
-                        <span>Logs</span>
-                    </li>
-                    <li>
-                        <SettingsApplicationsIcon className="icon"/>
-                        <span>Setting</span>
-                    </li>
                     <p className="title">USER</p>
                     <li>
                         <AccountCircleOutlinedIcon className="icon"/>
                         <span>Profile</span>
                     </li>
-                    <li>
+                    <li onClick={handleLogout} style={{cursor: "pointer"}}>
                         <ExitToAppIcon className="icon"/>
                         <span>Logout</span>
                     </li>
                 </ul>
             </div>
         </div>
-    )
+    );
 }
 
 export default Sidebar;

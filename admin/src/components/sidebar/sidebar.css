@@ -66,4 +66,15 @@ span {
     align-items: center;
     margin: 10px;
   }
-  
+
+.icon {
+  color: inherit; 
+}
+
+.icon-expand {
+  color: #888;
+}
+
+.dropdown-item{
+  color: #888; 
+}

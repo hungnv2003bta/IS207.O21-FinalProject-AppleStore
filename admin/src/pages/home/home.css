@@ -4,6 +4,7 @@
   
 .home .homeContainer {
   flex: 6;
+  width: 70%;
 }
   
 .widgets, .charts {
