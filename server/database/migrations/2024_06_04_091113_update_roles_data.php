@@ -6,16 +6,11 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
-        Schema::create('product_items', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('product_id');
-            $table->integer('qty_in_stock');
-        });
+        DB::table('roles')->where('id', 0)->update(['name' => 'admin']);
+        DB::table('roles')->where('id', 1)->update(['name' => 'user']);
     }
 
     /**
@@ -23,6 +18,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_items');
+        //
     }
 };

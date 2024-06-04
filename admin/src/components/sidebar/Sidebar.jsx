@@ -54,17 +54,23 @@ const Sidebar = () => {
                         </div>
                     )}
                     <li>
-                        <CreditCardIcon className="icon"/>
-                        <span>Orders</span>
+                        <Link to="/orders" style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}>
+                            <CreditCardIcon className="icon"/>
+                            <span>Orders</span>
+                        </Link>
                     </li>
                     <li>
-                        <LocalShippingIcon className="icon"/>
-                        <span>Delivery</span>
+                        <Link to="/delivery" style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}>
+                            <LocalShippingIcon className="icon"/>
+                            <span>Delivery</span>
+                        </Link>
                     </li>
                     <p className="title">USER</p>
                     <li>
-                        <AccountCircleOutlinedIcon className="icon"/>
-                        <span>Profile</span>
+                        <Link to="/adminProfile" style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}>
+                            <AccountCircleOutlinedIcon className="icon"/>
+                            <span>Profile</span>
+                        </Link>
                     </li>
                     <li onClick={handleLogout} style={{cursor: "pointer"}}>
                         <ExitToAppIcon className="icon"/>

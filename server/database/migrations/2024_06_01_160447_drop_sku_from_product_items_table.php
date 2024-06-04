@@ -4,15 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdatePasswordLengthInUsersTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('password', 80)->change();
+        Schema::table('product_items', function (Blueprint $table) {
+            $table->dropColumn('SKU');  // Drop the SKU column
         });
     }
 
@@ -21,8 +21,8 @@ class UpdatePasswordLengthInUsersTable extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('password', 60)->change(); // Change back to the original length if needed
+        Schema::table('product_items', function (Blueprint $table) {
+            $table->string('SKU')->unique();  // Re-add the SKU column with unique constraint
         });
     }
-}
+};
