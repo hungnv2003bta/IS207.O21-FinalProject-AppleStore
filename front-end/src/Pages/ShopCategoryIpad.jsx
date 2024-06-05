@@ -5,7 +5,7 @@ import Ipad from '../Components/Item/iPad';
 import Navbar from '../Components/Navbar/Navbar'
 
 const ShopCategoryIpad = (props) => {
-  const { all_product } = useContext(ShopContext);
+  const { products } = useContext(ShopContext);
 
   return (
     <>
@@ -13,8 +13,8 @@ const ShopCategoryIpad = (props) => {
     <div className='shop-category'>
       <img className="shopcategory-banner" src={props.banner} alt="" />
       <div className="shopcategory-products">
-        {all_product.filter(item => item.category === 'iPad').map((item, i) => (
-          <Ipad key={i} id={item.id} name={item.name} image={item.image} new_price={item.new_price} old_price={item.old_price} />
+        {products.filter(item => item.category === 'iPad').map((item, i) => (
+          <Ipad key={i} id={item.id} name={item.name} product_image={item.product_image} price={item.price} discount={item.discount} />
         ))}
         </div>
       </div>
