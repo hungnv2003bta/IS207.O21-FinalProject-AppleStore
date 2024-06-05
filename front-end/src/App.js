@@ -17,6 +17,7 @@ import Footer from './Components/Footer/Footer'
 import Delivery from './Pages/Delivery'
 import Pay from './Pages/Pay'
 import Shopping from './Pages/Shopping'
+import In4 from './Pages/In4'
 function App() {
   return (
     <div>
@@ -37,6 +38,7 @@ function App() {
         <Route path='/delivery' element={<Delivery/>}/>
         <Route path='/pay' element={<Pay/>}/>
         <Route path='/shopping' element={<Shopping/>}/>
+        <Route path='/in4' element={<In4/>}/>
       </Routes>
       <Footer/>
       </BrowserRouter>

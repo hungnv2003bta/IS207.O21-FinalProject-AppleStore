@@ -49,7 +49,7 @@ const Footer = () => {
             <a href="!#">
               <p>Tuyển dụng</p>
             </a>
-            <a href="!#">
+            <a href="In4">
               <p>Thông tin chung</p>
             </a>
           </div>
