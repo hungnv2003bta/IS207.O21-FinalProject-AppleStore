@@ -58,3 +58,39 @@ button:hover {
 #deleteBtn{
   background-color: #dc3545;
 }
+
+.right-side {
+  background-color: #f4f4f4; 
+  padding: 20px; 
+  border-radius: 8px; 
+}
+
+.right-side p {
+  margin: 0 0 10px; 
+  font-size: 16px; /* Font size for better readability */
+}
+
+.right-side ul {
+  list-style-type: none; 
+  padding: 0;
+  margin: 0;
+}
+
+.right-side ul li {
+  background-color: white;
+  margin: 10px 0; 
+  padding: 10px; 
+  border: 1px solid #ccc;
+  border-radius: 4px; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.right-side ul li p {
+  margin: 5px 0; 
+  font-size: 14px; 
+}
+
+.right-side ul li p strong {
+  font-weight: bold;
+}

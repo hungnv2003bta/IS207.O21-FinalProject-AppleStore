@@ -7,6 +7,8 @@ const Orders = () => {
   const [showModal, setShowModal] = useState(false);
   const [editingOrder, setEditingOrder] = useState(null);
   const [userDetails, setUserDetails] = useState(null);
+  const [orderDetails, setOrderDetails] = useState(null);
+  
 
   useEffect(() => {
     fetch('http://localhost:8000/api/orders')
@@ -41,23 +43,62 @@ const Orders = () => {
     .catch(error => console.error('Failed to delete order:', error));
   };
 
-  const handleViewDetails = (order) => {
-    setEditingOrder(order);
-    setShowModal(true);
+  const handleViewDetails = async (order) => {
+    try {
+      const response = await fetch(`http://localhost:8000/api/orders/${order.id}`);
+      const data = await response.json();
+      if (data) {
+        setEditingOrder(data);
+        const userResponse = await fetch(`http://localhost:8000/api/users/${data.user_id}`);
+        const userData = await userResponse.json();
+        setUserDetails(userData);
+
+        fetch(`http://localhost:8000/api/orders/${order.id}/details`).then((res) => {
+          res.json()
+          .then((data) => {
+            setOrderDetails(data);
+          })
+        });
+
+        setShowModal(true);
+      } else {
+        console.log("No details available for this order.");
+      }
+    } catch (error) {
+      console.error('Failed to fetch order details:', error);
+    }
   };
 
-  const OrderDetailsModal = ({ order, onClose }) => {
+  const OrderDetailsModal = ({ order,  onClose, orderDetails }) => {
+    const [productList, setProductList] = useState([]);
+
+    const getDetail = async () => {
+      try {
+        const productPromises = orderDetails.map((orderDetail) =>
+          fetch(`http://localhost:8000/api/products/${orderDetail.product_id}`).then((res) => res.json())
+        );
+        const productListData = await Promise.all(productPromises);
+        setProductList(productListData);
+      } catch (error) {
+        console.error('Failed to fetch products:', error);
+      }
+    }
+
+    useEffect(() => {
+      getDetail();
+    }, [])
+    
     return (
       <div style={{
         display: showModal ? "block" : "none",
         position: "fixed",
-        left: "30%",
-        top: "15%",
+        left: "20%", 
+        top: "5%",
         backgroundColor: "#C7E2F2",
         padding: "20px",
         zIndex: 100,
         width: "60%",
-        maxHeight: "80%",
+        minHeight: "90%",
         overflowY: "auto",
         border: "2px solid black"
       }}>
@@ -65,13 +106,24 @@ const Orders = () => {
         {order ? (
           <>
           <div className='left-side'>
-            <p><strong>Name: </strong> {order.user_id} </p>
-            <p><strong>Email: </strong> </p>
-            <p><strong>Address: </strong> </p>
-            <p><strong>Total Money: </strong> </p>
+            <p><strong>ID:</strong> {order.id}</p>
+            <p><strong>Name:</strong> {userDetails?.name || 'N/A'}</p>
+            <p><strong>Email:</strong> {userDetails?.email || 'N/A'}</p>
+            <p><strong>Phone:</strong> {userDetails?.phone_number || 'N/A'}</p>
+            <p><strong>Address: </strong> {order.address}</p>
+            <p><strong>Total Money: </strong> {order.total_money}</p>
           </div>
           <div className='right-side'>
-            <p><strong>List of products: </strong> </p>
+            <p><strong>List of products: </strong></p>
+            <ul>
+              {productList?.map((detail, i) => (
+                <li key={i}>
+                  <p>STT: {i + 1}</p>
+                  <p>{detail.name}</p>
+                  <p>{detail.price} Đồng</p>
+                </li>
+              ))}
+            </ul>
           </div>
           </>
         ) : (
@@ -119,7 +171,7 @@ const Orders = () => {
           </tbody>
         </table>
 
-        {showModal && <OrderDetailsModal order={editingOrder} onClose={() => setShowModal(false)} />}
+        {showModal && orderDetails && <OrderDetailsModal order={editingOrder} orderDetails={orderDetails} onClose={() => setShowModal(false)} />}
       </div>
     </div>
   );

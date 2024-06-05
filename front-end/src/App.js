@@ -15,6 +15,8 @@ import mac_banner from './Components/Assets/Banner/mac-banner.jpeg'
 import ipad_banner from './Components/Assets/Banner/ipad-banner.jpeg'
 import Footer from './Components/Footer/Footer';
 import Protected from './Components/Protected/Protected';
+import Checkout from './Pages/Checkout';
+import ForgetPassword from './Pages/ForgetPassword';
 
 function App() {
   return (
@@ -33,6 +35,9 @@ function App() {
             <Route path='/cart' element={<Protected Cmp={Cart}/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/signup' element={<Signup/>}/>
+            <Route path='/checkout' element={<Checkout/>} />
+            <Route path='/forgetpassword' element={<ForgetPassword/>} />
+
           </Routes>
         </div>
       <Footer/>
