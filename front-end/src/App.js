@@ -13,7 +13,8 @@ import Search from './Pages/Search';
 import iphone_banner from './Components/Assets/Banner/iphone-banner.webp'
 import mac_banner from './Components/Assets/Banner/mac-banner.jpeg'
 import ipad_banner from './Components/Assets/Banner/ipad-banner.jpeg'
-import Footer from './Components/Footer/Footer';
+import Footer from './Components/Footer/Footer'
+import Delivery from './Pages/Delivery';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
+        <Route path='/delivery' element={<Delivery/>}/>
       </Routes>
       <Footer/>
       </BrowserRouter>

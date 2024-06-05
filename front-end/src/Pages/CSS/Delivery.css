@@ -1,0 +1,26 @@
+.delivery {
+    padding-left: 50px;
+}
+h4 {
+    font-size: 30px;
+    text-align: center;
+}
+.title {
+    color: #ff5a5a;
+}
+h1 {
+    font-size: 20px;
+}
+table, td, tr {
+    border: 1.5px solid black;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.titletb {
+    text-align: center;
+}
+.fee {
+    text-align: center;
+}

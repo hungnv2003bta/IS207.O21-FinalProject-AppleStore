@@ -31,7 +31,7 @@ const Footer = () => {
 
           <div className="sb__footer-links-div">
             <h4>HỖ TRỢ KH</h4>
-            <a href="!#">
+            <a href="/delivery">
               <p>Chính sách giao hàng</p>
             </a>
             <a href="!#">
