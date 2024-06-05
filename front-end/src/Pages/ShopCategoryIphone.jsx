@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import './CSS/ShopCategoryIphone.css';
 import { ShopContext } from '../Context/ShopContext';
 import Iphone from '../Components/Item/iPhone';
+import Navbar from '../Components/Navbar/Navbar'
 
 const ShopCategoryIphone = (props) => {
   const { all_product } = useContext(ShopContext);
 
   return (
+    <><Navbar/>
     <div className='shop-category'>
       <img className="shopcategory-banner" src={props.banner} alt="" />
       <div className="shopcategory-products">
@@ -15,6 +17,7 @@ const ShopCategoryIphone = (props) => {
         ))}
       </div>
     </div>
+    </>
   );
 }
 

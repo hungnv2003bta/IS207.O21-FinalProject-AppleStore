@@ -50,8 +50,6 @@ const GridLayout = () => {
                 </div>
                 
             </div>
-         
-            
         </div>
     )
 }

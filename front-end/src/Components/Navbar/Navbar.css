@@ -28,7 +28,7 @@
   height: 25px;
 }
 .bx-search{
-  font-size: 24px;  
+  font-size: 24px;
 }
 .nav-menu li{
   display: flex;
@@ -51,7 +51,7 @@
   cursor: pointer;
 }
 .nav-search-cart button{
-  background-color: white;
+  background-color: #f4f4f4;
   border: none;
   cursor: pointer;
 }
@@ -93,4 +93,32 @@
   font-size: 14px;
   align-items: center;
   color: rgb(0, 0, 0); 
+}
+
+.bx-user{
+  font-size: 24px;
+  color: #000000;
+}
+
+.nav-profile .dropdown-menu {
+  margin-top: 5px;
+  background-color: #f8f9fa;
+  border-radius: 1px;
+  border: 1px solid #ccc;
+}
+
+.nav-profile .dropdown-item {
+  display: block;
+  padding: 1px 2px; 
+  color: #333; 
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-profile .dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.nav-profile .dropdown-item:hover {
+  background-color: #e7e7e7;
+  color: #000; 
 }

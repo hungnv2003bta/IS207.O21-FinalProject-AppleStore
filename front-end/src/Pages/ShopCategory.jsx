@@ -2,10 +2,13 @@ import React, { useContext } from 'react'
 import './CSS/ShopCategory.css'
 import { ShopContext } from '../Context/ShopContext';
 import Item from '../Components/Item/Item';
+import Navbar from '../Components/Navbar/Navbar'
 
 const ShopCategory = (props) => {
   const {all_product} = useContext(ShopContext);
   return (
+    <>
+    <Navbar />
     <div className='shop-category'>
       <img className="shopcategory-banner" src={props.banner} alt="" width="100%" height="500"/>
       <div className="shopcategory-indexSort">
@@ -30,6 +33,7 @@ const ShopCategory = (props) => {
         LoadMore
       </div>
     </div>
+    </>
   )
 }
 

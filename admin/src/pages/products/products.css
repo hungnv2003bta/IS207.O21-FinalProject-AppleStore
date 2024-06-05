@@ -1,0 +1,22 @@
+.products {
+  display: flex;
+  min-height: 100vh;
+}
+
+.productsContainer {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f4f4f4;
+  width: 70%;
+}
+
+h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+table th {
+  background-color: #007BFF;
+  color: white;
+  text-transform: uppercase;
+}

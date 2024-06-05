@@ -1,0 +1,43 @@
+
+.productsContainer form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.productsContainer input,
+.productsContainer textarea,
+.productsContainer button {
+  margin-bottom: 15px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.productsContainer input[type="file"] {
+  border: none;
+}
+
+.productsContainer button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.productsContainer button:hover {
+  background-color: #45a049;
+}
+
+.productsContainer textarea {
+  height: 100px;
+}
+
+.label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}

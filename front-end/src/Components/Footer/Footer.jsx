@@ -11,20 +11,16 @@ const Footer = () => {
             <p>Mua hàng: 1900-1814 (7h30 - 22h00)</p>
             <p>Khiếu nại: 1900-1816 (7h30 - 22h00)</p>
             <p>Bảo hành: 1900-1820 (7h30 - 22h00)</p>
-            {/* <div className="socialmedia">
-              <p><img src={fb} alt =""/></p>
-              <p><img src={tiktok} alt =""/></p>
-            </div> */}
           </div>
           <div className="sb__footer-links-div">
             <h4>SẢN PHẨM</h4>
-            <a href="/macs">
+            <a href="/Mac">
               <p>Macbook</p>
             </a>
-            <a href="/iphones">
+            <a href="/iPhone">
               <p>iPhone</p>
             </a>
-            <a href="/ipads">
+            <a href="/iPad">
               <p>iPad</p>
             </a>
           </div>
@@ -43,9 +39,6 @@ const Footer = () => {
           </div>
           <div className="sb__footer-links-div">
             <h4>6TAO</h4>
-            {/* <a href="!#">
-              <p>Liên hệ</p>
-            </a> */}
             <a href="!#">
               <p>Tuyển dụng</p>
             </a>

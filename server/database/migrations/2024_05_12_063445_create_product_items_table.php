@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('product_items', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id');
-            $table->integer('SKU');
             $table->integer('qty_in_stock');
-            $table->string('product_image', 500)->nullable();
         });
     }
 

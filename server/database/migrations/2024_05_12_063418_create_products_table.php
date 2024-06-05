@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name', 100);
             $table->string('color', 30);
             $table->string('memory', 15);
             $table->string('RAM', 15);
@@ -22,8 +23,8 @@ return new class extends Migration
             $table->string('battery', 20);
             $table->string('front_facing_camera', 100);
             $table->string('rear_facing_camera', 100);
-            $table->integer('price');
-            $table->integer('discount');
+            $table->string('price', 100);
+            $table->string('discount', 100);
             $table->string('product_image', 500);
             $table->longText('description');
         });

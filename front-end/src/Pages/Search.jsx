@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "./CSS/Search.css";
 import data from "../Components/Assets/all_product.js";
+import Navbar from '../Components/Navbar/Navbar'
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   return (
     <>
+    <Navbar />
     <div className="templateContainer">
       <div className="searchInput_Container">
         <input type="text" id="searchInput" placeholder="Search here" onChange={(event) => {
