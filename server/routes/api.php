@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductItemsController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\OrderDetailsController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -43,3 +44,5 @@ Route::get('orders/{id}', [OrdersController::class, 'show']);
 Route::post('orders', [OrdersController::class, 'store']);
 Route::put('orders/{id}', [OrdersController::class, 'update']);
 Route::delete('orders/{id}', [OrdersController::class, 'destroy']);
+
+Route::get('orders/{orderId}/details', [OrderDetailsController::class, 'getOrderDetails']);

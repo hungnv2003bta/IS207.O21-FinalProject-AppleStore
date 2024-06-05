@@ -29,6 +29,7 @@ class OrdersController extends Controller
         $order->order_date = $request->order_date;
         $order->status = $request->status;
         $order->total_money = $request->total_money;
+        $order->address = $request->address;
         $order->save();
 
         return response()->json($order, 201);
