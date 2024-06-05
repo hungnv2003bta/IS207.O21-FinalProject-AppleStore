@@ -14,8 +14,8 @@ import iphone_banner from './Components/Assets/Banner/iphone-banner.webp'
 import mac_banner from './Components/Assets/Banner/mac-banner.jpeg'
 import ipad_banner from './Components/Assets/Banner/ipad-banner.jpeg'
 import Footer from './Components/Footer/Footer'
-import Delivery from './Pages/Delivery';
-
+import Delivery from './Pages/Delivery'
+import Pay from './Pages/Pay'
 function App() {
   return (
     <div>
@@ -34,6 +34,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/delivery' element={<Delivery/>}/>
+        <Route path='/pay' element={<Pay/>}/>
       </Routes>
       <Footer/>
       </BrowserRouter>

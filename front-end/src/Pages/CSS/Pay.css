@@ -1,0 +1,20 @@
+.pay {
+    padding-left: 50px;
+    padding-bottom: 5px;
+}
+.title {
+    color: #ff5a5a;
+}
+h1 {
+    color: grey;
+}
+.number {
+    font-size: 20px;
+    padding-top: 10px;
+}
+.detail {
+    padding-left: 40px;
+}
+table {
+    width: 70%;
+}

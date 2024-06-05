@@ -34,7 +34,7 @@ const Footer = () => {
             <a href="/delivery">
               <p>Chính sách giao hàng</p>
             </a>
-            <a href="!#">
+            <a href="/pay">
               <p>Hướng dẫn thanh toán</p>
             </a>
             <a href="!#">
