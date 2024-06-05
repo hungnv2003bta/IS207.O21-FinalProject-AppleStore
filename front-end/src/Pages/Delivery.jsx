@@ -4,7 +4,7 @@ import './CSS/Delivery.css'
 const Delivery = () => {
   return (
     <div className='delivery'>
-        <h4 className='title'>Chính sách giao hàng 6TAO</h4>
+        <h4 className='title'>CHÍNH SÁCH GIAO HÀNG 6TAO</h4>
         <p>*Áp dụng từ: 05/06/2024</p>
         <h1>1. PHẠM VI ÁP DỤNG</h1>
         <p>Tất cả các tỉnh thành trên Việt Nam.</p>

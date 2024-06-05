@@ -4,7 +4,7 @@ import './CSS/Pay.css'
 const Pay = () => {
     return (
         <div className='pay'>
-            <h4 className='title'>THANH TOÁN</h4>
+            <h4 className='title'>HƯỚNG DẪN THANH TOÁN</h4>
             <h1>LỰA CHỌN THANH TOÁN</h1>
             <div className='detail'>
                 <p><strong>I. Thanh toán tiền mặt</strong></p>

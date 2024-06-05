@@ -1,0 +1,26 @@
+.recruitment {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+p {
+    padding-bottom: 10px;
+}
+.title {
+    color: #ff5a5a;
+}
+.number {
+    color: black;
+}
+table {
+    width: 100%;
+}
+.header {
+    text-align: center;
+    font-size: 18px;
+}
+h1 {
+    color: black;
+}
+em {
+    padding-left: 40px;
+}

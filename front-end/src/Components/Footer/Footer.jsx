@@ -46,7 +46,7 @@ const Footer = () => {
             {/* <a href="!#">
               <p>Liên hệ</p>
             </a> */}
-            <a href="!#">
+            <a href="Recruitment">
               <p>Tuyển dụng</p>
             </a>
             <a href="In4">

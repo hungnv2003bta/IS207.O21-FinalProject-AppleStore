@@ -18,6 +18,7 @@ import Delivery from './Pages/Delivery'
 import Pay from './Pages/Pay'
 import Shopping from './Pages/Shopping'
 import In4 from './Pages/In4'
+import Recruitment from './Pages/Recruitment';
 function App() {
   return (
     <div>
@@ -39,6 +40,7 @@ function App() {
         <Route path='/pay' element={<Pay/>}/>
         <Route path='/shopping' element={<Shopping/>}/>
         <Route path='/in4' element={<In4/>}/>
+        <Route path='/recruitment' element={<Recruitment/>}/>
       </Routes>
       <Footer/>
       </BrowserRouter>
