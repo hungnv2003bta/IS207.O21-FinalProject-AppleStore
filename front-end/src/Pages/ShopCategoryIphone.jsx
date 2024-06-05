@@ -5,15 +5,15 @@ import Iphone from '../Components/Item/iPhone';
 import Navbar from '../Components/Navbar/Navbar'
 
 const ShopCategoryIphone = (props) => {
-  const { all_product } = useContext(ShopContext);
+  const { products } = useContext(ShopContext);
 
   return (
     <><Navbar/>
     <div className='shop-category'>
       <img className="shopcategory-banner" src={props.banner} alt="" />
       <div className="shopcategory-products">
-        {all_product.filter(item => item.category === 'iPhone').map((item, i) => (
-          <Iphone key={i} id={item.id} name={item.name} image={item.image} new_price={item.new_price} old_price={item.old_price} />
+        {products.filter(item => item.category === 'iPhone').map((item, i) => (
+          <Iphone key={i} id={item.id} name={item.name} product_image={item.product_image} price={item.price} discount={item.discount} />
         ))}
       </div>
     </div>

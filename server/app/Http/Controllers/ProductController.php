@@ -17,6 +17,7 @@ class ProductController extends Controller
     public function addProduct(Request $req) {
         $product = new products;
         $product->name = $req->input('name');
+        $product->category = $req->input('category');
         $product->color = $req->input('color');
         $product->memory = $req->input('memory');
         $product->RAM = $req->input('RAM');
@@ -65,7 +66,7 @@ class ProductController extends Controller
         $product = products::with('productItems')->find($id);
         if ($product) {
             $product->update($req->only([
-                'name', 'color', 'memory', 'RAM', 'chip', 'display_size',
+                'name', 'category', 'color', 'memory', 'RAM', 'chip', 'display_size',
                 'display_technology', 'battery', 'front_facing_camera',
                 'rear_facing_camera', 'price', 'discount', 'description',
                 'product_image'

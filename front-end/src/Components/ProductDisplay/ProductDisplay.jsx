@@ -6,16 +6,9 @@ const ProductDisplay = (props) => {
   const {product} = props;
   const {addToCart} = useContext(ShopContext);
 
-
   return (
     <div className="productdisplay">
       <div className="productdisplay-left">
-        <div className="productdisplay-img-list">
-          <img src={product.image} alt="" class="image_display"/>
-          <img src={product.image} alt="" class="image_display"/>
-          <img src={product.image} alt="" class="image_display"/>
-          <img src={product.image} alt="" class="image_display"/>
-        </div>
         <div className="productdisplay-img">
           <img className="productdisplay-main-img" src={product.image} alt="" class="main_image_display"/>
         </div>

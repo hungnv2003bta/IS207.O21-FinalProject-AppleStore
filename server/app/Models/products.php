@@ -11,7 +11,7 @@ class products extends Model
 
     protected $table = 'products';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'color', 'memory', 'RAM', 'chip', 'display_size', 'display_technology', 'battery', 'front_facing_camera', 'rear_facing_camera', 'price', 'discount', 'product_image', 'description'];
+    protected $fillable = ['name', 'category', 'color', 'memory', 'RAM', 'chip', 'display_size', 'display_technology', 'battery', 'front_facing_camera', 'rear_facing_camera', 'price', 'discount', 'product_image', 'description'];
 
     public function category()
     {  

@@ -4,6 +4,7 @@ import './add_product.css';
 
 const Products = () => {
   const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
   const [color, setColor] = useState("");
   const [memory, setMemory] = useState("");
   const [RAM, setRam] = useState("");
@@ -20,7 +21,7 @@ const Products = () => {
   const [qty_in_stock, setQtyInStock] = useState("");
 
   const handleSubmit = async (event) => {
-    console.warn(name, color, memory, RAM, chip, display_size, display_technology,
+    console.warn(name, color, category, memory, RAM, chip, display_size, display_technology,
       battery, front_facing_camera, rear_facing_camera,
       price, discount, product_image, description, qty_in_stock
     )
@@ -28,6 +29,7 @@ const Products = () => {
     event.preventDefault(); 
     const formData = new FormData();
     formData.append('name', name);
+    formData.append('category', category);
     formData.append('color', color);
     formData.append('memory', memory);
     formData.append('RAM', RAM);
@@ -59,6 +61,9 @@ const Products = () => {
         <form>
           <label htmlFor="name">Name:</label>
           <input type="text" placeholder="Name" onChange={(e)=>setName(e.target.value)}/>
+
+          <label htmlFor="category">Category:</label>
+          <input type="text" placeholder="Category" onChange={(e)=>setCategory(e.target.value)}/>
 
           <label htmlFor="color">Color:</label>
           <input type="text" placeholder="Color" onChange={(e)=>setColor(e.target.value)} />

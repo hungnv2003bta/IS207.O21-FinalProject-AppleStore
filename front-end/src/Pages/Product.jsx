@@ -8,9 +8,9 @@ import RelatedProducts from '../Components/RelatedProducts/RelatedProducts'
 import Navbar from '../Components/Navbar/Navbar'
 
 const Product = () => {
-  const {all_product} = useContext(ShopContext);
+  const {products} = useContext(ShopContext);
   const {productId} = useParams();
-  const product = all_product.find((e)=> e.id === Number(productId));
+  const product = products.find((e)=> e.id === Number(productId));
   return (
     <>
     <Navbar/>
