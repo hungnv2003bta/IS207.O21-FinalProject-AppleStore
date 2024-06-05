@@ -17,7 +17,7 @@ const CarItems = () => {
       </div>
       <hr/>
       <div>
-        {all_product.map((e)=>{
+        {all_product?.map((e)=>{
           if(cartItems[e.id]>0){
             return <div>
               <div className="cartitems-format">
