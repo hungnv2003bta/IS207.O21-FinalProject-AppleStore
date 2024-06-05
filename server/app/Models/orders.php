@@ -11,10 +11,11 @@ class orders extends Model
 
     protected $table = 'orders';
     protected $primaryKey = 'id';
-    protected $filltable = ['user_id', 'order_date', 'status', 'total_money'];
+    protected $fillable = ['user_id', 'note', 'order_date', 'status', 'total_money'];
 
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(users::class);
     }
+    public $timestamps = false;
 }

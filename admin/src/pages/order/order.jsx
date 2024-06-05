@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../../components/sidebar/Sidebar';
-import './order.css';  // Assuming you have a similar CSS setup for orders
+import './order.css';
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -25,6 +25,20 @@ const Orders = () => {
     })
     .then(() => setOrders(orders.filter(order => order.id !== orderId)))
     .catch(error => console.error('Failed to delete order:', error));
+  };
+
+  const handleViewDetails = (orderId) => {
+    console.log("View details for order", orderId);
+    // Implement detail view logic here
+    // For demonstration, we just log it to the console
+  };
+
+  const translateStatus = (status) => {
+    switch(status) {
+      case 0: return "Chưa xác nhận";
+      case 1: return "Xác nhận";
+      default: return "Unknown status";
+    }
   };
 
   const OrderEditModal = () => {
@@ -75,11 +89,9 @@ const Orders = () => {
       }}>
         <h2>Edit Order</h2>
         <form onSubmit={handleSubmit}>
-          {/* Add form fields as necessary */}
           <label>Status:
             <input type="text" name="status" value={localEditingOrder.status} onChange={handleInputChange} />
           </label>
-          {/* Add other fields similarly */}
           <button type="submit">Save</button>
           <button onClick={() => setShowModal(false)}>Cancel</button>
         </form>
@@ -101,6 +113,7 @@ const Orders = () => {
               <th>Status</th>
               <th>Total</th>
               <th>Actions</th>
+              <th>Details</th>
             </tr>
           </thead>
           <tbody>
@@ -109,11 +122,14 @@ const Orders = () => {
                 <td>{order.id}</td>
                 <td>{order.user_id}</td>
                 <td>{order.order_date}</td>
-                <td>{order.status}</td>
+                <td>{translateStatus(order.status)}</td>
                 <td>${order.total_money}</td>
                 <td>
-                  <button onClick={() => handleEdit(order)}>Edit</button>
-                  <button onClick={() => handleDelete(order.id)}>Delete</button>
+                  <button onClick={() => handleEdit(order)}>Xác nhận</button>
+                  <button id="deleteBtn" onClick={() => handleDelete(order.id)}>Xoá</button>
+                </td>
+                <td>
+                  <button onClick={() => handleViewDetails(order.id)}>View Details</button>
                 </td>
               </tr>
             ))}

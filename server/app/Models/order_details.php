@@ -11,13 +11,13 @@ class order_details extends Model
 
     protected $table = 'order_details';
     protected $primaryKey = 'id';
-    protected $fillable = ['order_id', 'product_id', 'qty', 'price', 'total_money'];
+    protected $fillable = ['order_id', 'product_id', 'price', 'qty', 'total_money'];
 
-    public function product()
+    public function products()
     {
-        return $this->belongsTo(product::class);
+        return $this->belongsTo(products::class);
     }
-    public function order()
+    public function orders()
     {
         return $this->belongsTo(orders::class);
     }

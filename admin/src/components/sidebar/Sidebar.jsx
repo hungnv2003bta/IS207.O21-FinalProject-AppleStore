@@ -13,6 +13,7 @@ import { useState } from 'react';
 const Sidebar = () => {
     const navigate = useNavigate();
     const [isProductsOpen, setIsProductsOpen] = useState(false); // Manage dropdown state
+    const [isOrdersOpen, setIsOrdersOpen] = useState(false); // Manage dropdown state
 
     const handleLogout = () => {
         localStorage.removeItem("user-info");
@@ -53,14 +54,20 @@ const Sidebar = () => {
                             <Link to="/add-product" className="dropdown-item">Add Product</Link>
                         </div>
                     )}
-                    <li>
-                        <Link to="/orders" style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}>
-                            <CreditCardIcon className="icon"/>
-                            <span>Orders</span>
-                        </Link>
+                    <li onClick={() => setIsOrdersOpen(!isOrdersOpen)} style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
+                        <CreditCardIcon className="icon"/>
+                        <span>Orders</span>
+                        <ExpandMoreIcon className="icon-expand"/>
                     </li>
+                    {isOrdersOpen && (
+                        <div style={{ display: "block", paddingLeft: "20px" }}>
+                            <Link to="/orderConfirmed" className="dropdown-item">Đã xác nhận</Link>
+                            {/* <Link to="/orderDelivering" className="dropdown-item">Đang giao</Link> */}
+                            <Link to="/orderUnconfirmed" className="dropdown-item">Chưa xác nhận</Link>
+                        </div>
+                    )}
                     <li>
-                        <Link to="/delivery" style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}>
+                        <Link to="/orderDelivering" style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}>
                             <LocalShippingIcon className="icon"/>
                             <span>Delivery</span>
                         </Link>

@@ -5,9 +5,9 @@ import Products from "./pages/products/products";
 import AddProduct from "./pages/add-product/add_product"
 import Order from "./pages/order/order"
 import Delivery from "./pages/delivery/delivery"  
-import List from "./pages/list/List";
-import Single from "./pages/single/Single";
-import New from "./pages/new/New";
+import OrderConfirmed from "./pages/orderConfirmed/orderConfirmed";
+import OrderUnconfirmed from "./pages/orderUnconfirmed/orderUnconfirmed";
+import OrderDelivering from "./pages/orderDelivering/orderDelivering";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminProfile from "./pages/adminProfile/adminProfile";
@@ -24,8 +24,10 @@ function App() {
           <Route path="products" element={<Products />} />
           <Route path="add-product" element={<AddProduct />} />
           <Route path="adminProfile" element={<AdminProfile/>} />
-          <Route path="orders" element={<Order/>} />
-          <Route path="delivery" element={<Delivery/>} />
+          <Route path="orderConfirmed" element={<OrderConfirmed/>} />
+          <Route path="orderUnconfirmed" element={<OrderUnconfirmed/>} />
+          <Route path="orderDelivering" element={<OrderDelivering/>} />
+          {/* <Route path="delivery" element={<Delivery/>} /> */}
         </Routes>
       </BrowserRouter>
     </div>

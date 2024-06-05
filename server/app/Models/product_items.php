@@ -18,7 +18,5 @@ class product_items extends Model
         return $this->belongsTo(products::class, 'product_id');
     }
 
-    
-
     public $timestamps = false;
 }
