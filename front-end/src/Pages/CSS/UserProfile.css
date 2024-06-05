@@ -1,0 +1,41 @@
+/* UserProfile.css */
+body {
+  background-color: #f4f4f4;
+}
+
+.userProfile {
+  font-family: Arial, sans-serif;
+}
+
+.userProfile-container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.userProfile-container p {
+  margin: 10px 0;
+  color: #121111;
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+.change-password {
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+h3 {
+  color: #333;
+  margin-bottom: 10px;
+}

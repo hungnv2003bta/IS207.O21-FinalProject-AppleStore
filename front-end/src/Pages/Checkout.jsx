@@ -1,14 +1,37 @@
-import React from 'react';
+import React,{ useEffect, useState } from 'react';
 import CartItems from '../Components/CartItems/CartItems.jsx';
 import './CSS/Checkout.css';
 
 const Checkout = () => {
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone_number, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [note, setNote] = useState("");
+  
+  const handleSubmit = async (event) => {
+    console.warn(name, address, phone_number, email, note)
+    event.preventDefault(); 
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('address', address);
+    formData.append('phone_number', phone_number);
+    formData.append('email', email);
+    formData.append('note', note);
+
+    let result = await fetch ("http://localhost:8000/api/checkout", {
+      method: 'POST',
+      body: formData
+    });
+    alert("Đơn hàng được đặt thành công!")
+  }
+
   return (
     <div className="container">
       <div className="heading-checkout">
         <i className="fa fa-credit-card fa-4x" aria-hidden="true"></i>
         <h2>Thanh toán</h2>
-        <p className="lead">Vui lòng kiểm tra thông tin Khách hàng, thông tin Giỏ hàng trước khi Đặt hàng.</p>
+        <p className="lead">Vui lòng kiểm tra thông tin khách hàng, thông tin giỏ hàng trước khi đặt hàng.</p>
       </div>
       <div className="payment-content">
         <div className="customer-info">
@@ -16,58 +39,35 @@ const Checkout = () => {
           <div className="list-input-info">
             <div className="input">
               <label>Họ tên</label>
-              <input type="text" name="kh_ten" id="kh_ten" value="Nguyen Van A" readOnly />
-            </div>
-            <div className="input">
-              <label>Giới tính</label>
-              <input type="text" name="kh_gioitinh" id="kh_gioitinh" value="Nam" readOnly />
+              <input type="text" name="kh_ten" id="kh_ten" placeholder="Nguyen Van A" />
             </div>
             <div className="input">
               <label>Địa chỉ</label>
-              <input type="text" name="kh_diachi" id="kh_diachi" value="Thu Duc" readOnly />
+              <input type="text" name="kh_diachi" id="kh_diachi" placeholder="Thu Duc" />
             </div>
             <div className="input">
               <label>Điện thoại</label>
-              <input type="text" name="kh_dienthoai" id="kh_dienthoai" value="0915659223" readOnly />
+              <input type="text" name="kh_dienthoai" id="kh_dienthoai" placeholder="0915659223" />
             </div>
             <div className="input">
               <label>Email</label>
-              <input type="text" name="kh_email" id="kh_email" value="nguyenag@gmail.com" readOnly />
+              <input type="text" name="kh_email" id="kh_email" placeholder="nguyenag@gmail.com" />
             </div>
             <div className="input">
-              <label>Ngày sinh</label>
-              <input type="text" name="kh_ngaysinh" id="kh_ngaysinh" value="11/6/1989" readOnly />
-            </div>
-            <div className="input">
-              <label>CCCD</label>
-              <input type="text" name="kh_cmnd" id="kh_cmnd" value="362209685" readOnly />
+              <label>Ghi chú</label>
+              <input type="text" name="kh_note" id="kh_note" placeholder="Ghi chú..." />
             </div>
           </div>
 
           <h4>Hình thức thanh toán</h4>
           <h5> Hiện tại chỉ hỗ trợ thanh toán khi nhận hàng</h5>
-          <div className="payment-method">
-            <div className="payment-method-radio">
-              <input type="radio" className="custom-pmethod-input" required value="1" />
-              <label className="payment-method-lable">Tiền mặt</label>
-            </div>
-            <div className="custom-control custom-radio">
-              <input type="radio" className="custom-pmethod-input" required value="2" />
-              <label className="payment-method-lable">Chuyển khoản</label>
-            </div>
-            <div className="custom-control custom-radio">
-              <input type="radio" className="custom-pmethod-input" required value="3" />
-              <label className="payment-method-lable">Ship COD</label>
-            </div>
-          </div>
           <hr />
           <button className="order-button" type="submit" name="order-button">Đặt hàng</button>
         </div>
 
         <div className="order-products">
           <h4 className="heading-order-products">
-            <span className="text-muted">Giỏ hàng</span>
-            <span className="total-products">2</span>
+              Giỏ hàng
           </h4>
           <table className="table">
             <thead>
@@ -94,13 +94,6 @@ const Checkout = () => {
               </tr>
             </tbody>
           </table>
-
-          <div className="add-coupon">
-            <input type="text" placeholder="Mã khuyến mãi" />
-            <div className="submit-coupon-button">
-              <button type="submit">Xác nhận</button>
-            </div>
-          </div>
         </div>
       </div>
     </div>

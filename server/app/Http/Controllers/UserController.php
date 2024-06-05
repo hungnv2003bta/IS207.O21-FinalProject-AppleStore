@@ -137,4 +137,26 @@ class UserController extends Controller
 
         return response()->json(['message' => 'Password successfully updated']);
     }
+
+    public function changeUserPassword(Request $request)
+    {
+
+        $request->validate([
+            'email' => 'required|email',
+            'oldPassword' => 'required',
+            'newPassword' => 'required',
+        ]);
+
+        // Find the user by email
+        $user = users::where('email', $request->input('email'))->first();
+
+        if (!Hash::check($request->input('oldPassword'), $user->password)) {
+            return response()->json(['error' => 'Mật khẩu không đúng!!'], 401);
+        }
+
+        $user->password = Hash::make($request->input('newPassword'));
+        $user->save();
+
+        return response()->json(['message' => 'Password successfully updated']);
+    }
 }

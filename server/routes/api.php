@@ -25,6 +25,7 @@ Route::controller(UserController::class)->group(function () {
     Route::delete('/users/{id}', 'destroy');
     Route::get('/admin', 'getAdmin');
     Route::post('/change-password', 'changePassword');
+    Route::post('/change-user-password', 'changeUserPassword');
 });
 
 Route::get('/products', [ProductController::class, 'getAllProducts']);

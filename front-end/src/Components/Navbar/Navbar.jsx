@@ -32,10 +32,10 @@ const Navbar = () => {
         <div className="nav-cart-count">{getTotalCartItems()}</div>
         {
           localStorage.getItem('user-info')?
-            // <div className='nav-login'><button onClick={Logout}>Đăng xuất</button></div>
             <Nav>
               <NavDropdown title={<i className='bx bx-user' />} id="nav-dropdown" className="nav-profile">
                 <NavDropdown.Item onClick={() => navigate('/profile')}>Profile</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => navigate('/changepassword')}>Thay đổi mật khẩu</NavDropdown.Item>
                 <NavDropdown.Item onClick={Logout}>Đăng xuất</NavDropdown.Item>
               </NavDropdown>
             </Nav>

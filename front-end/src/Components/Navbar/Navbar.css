@@ -28,7 +28,7 @@
   height: 25px;
 }
 .bx-search{
-  font-size: 24px;  
+  font-size: 24px;
 }
 .nav-menu li{
   display: flex;
@@ -51,7 +51,7 @@
   cursor: pointer;
 }
 .nav-search-cart button{
-  background-color: white;
+  background-color: #f4f4f4;
   border: none;
   cursor: pointer;
 }

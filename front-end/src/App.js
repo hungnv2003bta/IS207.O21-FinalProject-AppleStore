@@ -17,6 +17,8 @@ import Footer from './Components/Footer/Footer';
 import Protected from './Components/Protected/Protected';
 import Checkout from './Pages/Checkout';
 import ForgetPassword from './Pages/ForgetPassword';
+import UserProfile from './Pages/UserProfile';
+import ChangePassword from './Pages/ChangePassword';
 
 function App() {
   return (
@@ -37,7 +39,8 @@ function App() {
             <Route path='/signup' element={<Signup/>}/>
             <Route path='/checkout' element={<Checkout/>} />
             <Route path='/forgetpassword' element={<ForgetPassword/>} />
-
+            <Route path='/profile' element={<UserProfile/>} />
+            <Route path='/changepassword' element={<ChangePassword/>} />
           </Routes>
         </div>
       <Footer/>
