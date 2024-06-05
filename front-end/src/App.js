@@ -16,6 +16,7 @@ import ipad_banner from './Components/Assets/Banner/ipad-banner.jpeg'
 import Footer from './Components/Footer/Footer'
 import Delivery from './Pages/Delivery'
 import Pay from './Pages/Pay'
+import Shopping from './Pages/Shopping'
 function App() {
   return (
     <div>
@@ -35,6 +36,7 @@ function App() {
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/delivery' element={<Delivery/>}/>
         <Route path='/pay' element={<Pay/>}/>
+        <Route path='/shopping' element={<Shopping/>}/>
       </Routes>
       <Footer/>
       </BrowserRouter>
