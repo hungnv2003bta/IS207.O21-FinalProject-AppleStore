@@ -10,6 +10,7 @@ import Cart from './Pages/Cart';
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import Search from './Pages/Search';
+import Search from './Pages/Checkout';
 import iphone_banner from './Components/Assets/Banner/iphone-banner.webp'
 import mac_banner from './Components/Assets/Banner/mac-banner.jpeg'
 import ipad_banner from './Components/Assets/Banner/ipad-banner.jpeg'
@@ -32,6 +33,7 @@ function App() {
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
+        <Route path='/checkout' element={<Checkout/>}/>
       </Routes>
       <Footer/>
       </BrowserRouter>

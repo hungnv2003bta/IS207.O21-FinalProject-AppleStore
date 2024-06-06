@@ -1,0 +1,196 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 24px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+}
+
+/* Heading Styles */
+.heading-checkout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.heading-checkout i {
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.heading-checkout h2 {
+    font-size: 2em;
+    margin: 10px 0;
+}
+
+.heading-checkout .lead {
+    font-size: 1.2em;
+    color: #666;
+}
+
+/* Payment Content Styles */
+.payment-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: baseline;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.customer-info, .oder-products {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+}
+
+.customer-info {
+    margin-right: 20px; /* Add spacing between customer-info and oder-products */
+}
+
+.customer-info h4, .oder-products h4 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+/* Input Styles */
+.list-input-info .input {
+    margin-bottom: 15px;
+}
+
+.list-input-info .input label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.list-input-info .input input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Payment Method Styles */
+.payment-method {
+    margin: 20px 0;
+}
+
+.payment-method-radio, .custom-control {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.custom-pmethod-input {
+    margin-right: 10px;
+}
+
+.payment-method-lable {
+    font-size: 1em;
+}
+
+/* Order Button Styles */
+.order-button {
+    background: #D62B70;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+.order-button:hover {
+    background-color:#f9bfd6;
+}
+
+/* Order Products Styles */
+.oder-products .heading-order-products {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.oder-products .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.oder-products .table th, .oder-products .table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.oder-products .table th {
+    background-color: #f2f2f2;
+}
+
+.oder-products .table tr:last-child td {
+    border-bottom: none;
+}
+
+.oder-products .table tr:last-child {
+    font-weight: bold;
+}
+
+/* Add Coupon Styles */
+.add-coupon {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* .add-coupon input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+} */
+
+.sumit-coupon-button {
+    display: flex;
+    align-items: center;
+}
+
+.sumit-coupon-button button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #D62B70;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    margin:10px 0;
+}
+
+.sumit-coupon-button button:hover {
+    background-color: #f9bfd6;
+}
+
+.add-coupon input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
