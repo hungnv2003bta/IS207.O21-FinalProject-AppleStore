@@ -1,4 +1,4 @@
-.item{
+.item-mac{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,7 +9,7 @@
     transition: width 0.3s ease;
     height: 100%;
   }
-  .item img{
+  .item-mac img{
     width: 70%;
     height: 80%;
     object-fit: cover;
@@ -17,36 +17,36 @@
     background-color: transparent;
     mix-blend-mode: multiply;
   }
-  .item h4{
+  .item-mac h4{
     color: #2c2c2c;
     margin: 6px 0px;
   }
-  .item-prices{
+  .item-mac-prices{
     display: flex;
     gap:20px;
   }
-  .item-price-new{
+  .item-mac-price-new{
     color: #2c2c2c;
     font-size: 18px;
     font-weight: 600;
   }
-  .item-price-old{
+  .item-mac-price-old{
     color: #8c8c8c;
     font-size:18px;
     font-weight: 500;
     text-decoration: line-through;
   }
-  .item:hover {
+  .item-mac:hover {
     border-color: #333; 
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   }
-  .storage-options {
+  .mac-storage-options {
     display: flex;
     justify-content: space-around;
     margin: 20px;
   }
-  .storage-options button {
+  .mac-storage-options button {
     padding: 5px 10px;
     margin-right: 10px;
     border: 1px solid #ccc;
@@ -55,11 +55,11 @@
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  .storage-options button.selected {
+  .mac-storage-options button.selected {
     background-color: #a5a6a7;
     color: white;
     border-color: #cfcfcf;
   }
-  .storage-options button:hover {
+  .mac-storage-options button:hover {
     background-color: #f0f0f0;
   }

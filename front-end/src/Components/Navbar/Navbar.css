@@ -55,9 +55,6 @@
   border: none;
   cursor: pointer;
 }
-.nav-menu li:hover{
-  color: #f1356d;
-}
 .nav-search-cart .bx-search:hover{
   color: #706f6f;
   width: 27px;

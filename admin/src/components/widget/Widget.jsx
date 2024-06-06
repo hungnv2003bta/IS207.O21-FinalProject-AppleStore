@@ -5,11 +5,11 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 
-const Widget = ({ type }) => {
+// Trong component Widget
+const Widget = ({ type, amount }) => {
   let data;
 
   //temporary
-  const amount = 100;
   const diff = 20;
 
   switch (type) {
@@ -83,7 +83,7 @@ const Widget = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counternumber">
-          {data.isMoney && "$"} {amount}
+          {amount} {data.isMoney && "đ"}
         </span>
         <span className="link">{data.link}</span>
       </div>
