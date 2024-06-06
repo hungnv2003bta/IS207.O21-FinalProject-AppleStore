@@ -14,31 +14,36 @@ const RelatedProducts = ({ category, id }) => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: relatedProducts.length > 1 ? 3 : 1, // Show only one slide if there's only one product
     slidesToScroll: 1,
-    arrows: false
+    arrows: false,
+    vertical: relatedProducts.length === 1, // Vertical scrolling if only one product
   };
 
-  const slider = useRef(null)
+  const slider = useRef(null);
 
   return (
     <div className="related-products">
       <h1>Sản phẩm liên quan</h1>
       <hr/>
       <div className="related-and-arrows">
-        <div>
-          <button onClick={() => slider.current.slickPrev()}><i class='bx bx-chevron-left'></i></button> 
-        </div>
+        {relatedProducts.length > 1 && (
+          <div>
+            <button onClick={() => slider.current.slickPrev()}><i className='bx bx-chevron-left'></i></button> 
+          </div>
+        )}
         <div className="related-product">
           <Slider ref={slider} {...settings}>
-          {relatedProducts.map((item,i) => {
-            return <Homepage key={i} id={item.id} name={item.name} product_image={item.product_image} price={item.price} discount={item.discount} />
-          })}
+            {relatedProducts.map((item, i) => {
+              return <Homepage key={i} id={item.id} name={item.name} product_image={item.product_image} price={item.price} discount={item.discount} />;
+            })}
           </Slider>
         </div>
-        <div>
-          <button onClick={() => slider.current.slickNext()}><i class='bx bx-chevron-right'></i></button>
-        </div>
+        {relatedProducts.length > 1 && (
+          <div>
+            <button onClick={() => slider.current.slickNext()}><i className='bx bx-chevron-right'></i></button>
+          </div>
+        )}
       </div>
     </div>
   );
