@@ -13,20 +13,25 @@ const Navbar = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem("user-info"));
-    if (userInfo && userInfo.id) {
-      axios.get(`http://localhost:8000/api/cart/count/${userInfo.id}`)
-        .then(response => {
-          if (response.data && Array.isArray(response.data) && response.data.length > 0) {
-            setTotalItems(response.data[0].cartItemsCount);
+    const fetchCartCount = async () => {
+      const userInfo = JSON.parse(localStorage.getItem("user-info"));
+      if (userInfo && userInfo.id) {
+        try {
+          const response = await axios.get(`http://localhost:8000/api/cart/count/${userInfo.id}`);
+          if (response.data && typeof response.data.cartItemsCount === 'number') {
+            setTotalItems(response.data.cartItemsCount);
           } else {
             console.error('Invalid response structure:', response.data);
           }
-        })
-        .catch(error => console.error('Failed to fetch cart count:', error));
-    } else {
-      console.error('User info is missing or invalid.');
-    }
+        } catch (error) {
+          console.error('Failed to fetch cart count:', error);
+        }
+      } else {
+        console.error('User info is missing or invalid.');
+      }
+    };
+
+    fetchCartCount();
   }, []);
 
   const Logout = () => {
