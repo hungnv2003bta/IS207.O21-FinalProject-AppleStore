@@ -53,4 +53,5 @@ Route::controller(CartController::class)->group(function () {
     Route::post('/cart/add', 'addToCart');
     Route::get('/cart/items/{id}', 'getCartItems');
     Route::delete('/cart/remove/{id}', 'removeFromCart');
+    ROute::get('/cart/count/{id}', 'getCartItemsCount');
 });

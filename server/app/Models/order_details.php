@@ -21,4 +21,6 @@ class order_details extends Model
     {
         return $this->belongsTo(orders::class);
     }
+
+    public $timestamps = false;
 }

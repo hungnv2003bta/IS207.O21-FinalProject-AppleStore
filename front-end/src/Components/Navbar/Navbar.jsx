@@ -4,11 +4,30 @@ import {Navbar as NavbarBT, Nav, NavDropdown} from 'react-bootstrap'
 import './Navbar.css'
 import { ShopContext } from '../../Context/ShopContext'
 import cart_icon from '../Assets/Icon/cart-icon.png'
+import axios from 'axios'
 
 const Navbar = () => {
   const [menu,setMenu] = useState("shop");
   const {getTotalCartItems} = useContext(ShopContext);
+  const [totalItems, setTotalItems] = useState(0);
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem("user-info"));
+    if (userInfo && userInfo.id) {
+      axios.get(`http://localhost:8000/api/cart/count/${userInfo.id}`)
+        .then(response => {
+          if (response.data && Array.isArray(response.data) && response.data.length > 0) {
+            setTotalItems(response.data[0].cartItemsCount);
+          } else {
+            console.error('Invalid response structure:', response.data);
+          }
+        })
+        .catch(error => console.error('Failed to fetch cart count:', error));
+    } else {
+      console.error('User info is missing or invalid.');
+    }
+  }, []);
 
   const Logout = () => {
     localStorage.clear();
@@ -29,7 +48,7 @@ const Navbar = () => {
       <div className="nav-search-cart">
         <Link to='/search'><button><i className='bx bx-search' /></button></Link>
         <Link to='/cart'><img src={cart_icon} alt="cart-icon" className="cart-icon"/></Link>
-        <div className="nav-cart-count">{getTotalCartItems()}</div>
+        <div className="nav-cart-count">{totalItems}</div>
         {
           localStorage.getItem('user-info')?
             <Nav>

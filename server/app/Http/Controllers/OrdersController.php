@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\orders;
+use Carbon\Carbon;
+use App\Models\order_details;
 
 class OrdersController extends Controller
 {
@@ -26,17 +28,27 @@ class OrdersController extends Controller
 
     // Create a new order
     public function store(Request $request)
-    {
-        $order = new orders;
-        $order->user_id = $request->user_id;
-        $order->order_date = $request->order_date;
-        $order->status = $request->status;
-        $order->total_money = $request->total_money;
-        $order->address = $request->address;
-        $order->save();
+{
+    $order = new orders;
+    $order->user_id = $request->user_id;
+    $order->order_date = Carbon::now()->toDateString();
+    $order->status = $request->status;
+    $order->total_money = $request->total_money;
+    $order->address = $request->address;
+    $order->save();
 
-        return response()->json($order, 201);
+    foreach ($request->cartItems as $item) {
+        $orderDetail = new order_details;
+        $orderDetail->order_id = $order->id;
+        $orderDetail->product_id = $item['product_id'];
+        $orderDetail->price = $item['price'];
+        $orderDetail->qty = $item['qty'];
+        $orderDetail->total_money = $item['total_money'];
+        $orderDetail->save();
     }
+
+    return response()->json($order, 201);
+}
 
     // Update an existing order
     public function update(Request $request, $id)

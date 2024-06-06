@@ -8,11 +8,19 @@ const Checkout = () => {
   const [cartItems, setCartItems] = useState([]);
   const [productDetails, setProductDetails] = useState([]);
   const [totalSum, setTotalSum] = useState(0);
+  const [user_info, setUser] = useState({});
+  const [user_id, setUserId] = useState(0);
+  const [name, setName] = useState("");
+  const [phone_number, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [note, setNote] = useState("");
+  const [address, setAddress] = useState("");
 
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
         const user = JSON.parse(localStorage.getItem("user-info"));
+        setUser(user);
         const user_id= user.id; 
         const response = await axios.get(`http://localhost:8000/api/cart/items/${user_id}`);
 
@@ -52,7 +60,57 @@ const Checkout = () => {
     setTotalSum(sum);
   }, [cartItems, productDetails]);
 
-  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append('user_id', user_id);
+    formData.append('note', note);
+    formData.append('status', 0);
+    formData.append('total_money', totalSum);
+    formData.append('address', address);
+    if (cartItems && cartItems.length) {
+      cartItems.forEach((item, index) => {
+          formData.append(`cartItems[${index}][product_id]`, item.product_id);
+          formData.append(`cartItems[${index}][price]`, productDetails[index]?.price);
+          formData.append(`cartItems[${index}][qty]`, item.qty);
+          formData.append(`cartItems[${index}][total_money]`, item.total_money);
+      });
+    }
+    
+    try {
+      const response = await fetch("http://localhost:8000/api/orders", {
+          method: 'POST',
+          body: formData
+      });
+
+      if (response.ok) {
+          alert("Đặt hàng thành công!");
+          cartItems.forEach((item) => {
+              if (item.user_id === user_id) {
+                  axios.delete(`http://localhost:8000/api/cart/remove/${item.id}`);
+              }
+          });
+          window.location.reload();
+          
+      } else {
+          alert("Đặt hàng thất bại.");
+      }
+  } catch (error) {
+      console.error("Network error:", error);
+      alert("Failed to place order due to network error.");
+  }
+
+  };
+
+  useEffect(() => {
+    if(user_info){
+      setUserId(user_info.id);
+      setName(user_info.name);
+      setPhoneNumber(user_info.phone_number);
+      setEmail(user_info.email);
+    }
+  });
 
   return (
     <div className="container">
@@ -68,30 +126,42 @@ const Checkout = () => {
           <div className="list-input-info">
             <div className="input">
               <label>Họ tên</label>
-              <input type="text" name="kh_ten" id="kh_ten" placeholder="Nguyen Van A" />
+              {user_info ? (
+                <input style={{ fontWeight: 'bold' }} type="text" name="kh_ten" id="kh_ten" value={user_info.name} readOnly />
+              ) : (
+                <input type="text" name="kh_ten" id="kh_ten" placeholder="Nguyen Van A" onChange={(e)=>setName(e.target.value)}/>
+              )}
             </div>
             <div className="input">
               <label>Địa chỉ</label>
-              <input type="text" name="kh_diachi" id="kh_diachi" placeholder="Thu Duc" />
+              <input type="text" name="kh_diachi" id="kh_diachi" placeholder="Thu Duc" onChange={(e)=>setAddress(e.target.value)}/>
             </div>
             <div className="input">
               <label>Điện thoại</label>
-              <input type="text" name="kh_dienthoai" id="kh_dienthoai" placeholder="0915659223" />
+              {user_info ? (
+                <input  style={{ fontWeight: 'bold' }} type="text" name="kh_dienthoai" id="kh_dienthoai" value={user_info.phone_number} readOnly/>
+              ):(
+                <input type="text" name="kh_dienthoai" id="kh_dienthoai" placeholder="0915659223" onChange={(e)=>setPhoneNumber(e.target.value)}/>
+              )}
             </div>
             <div className="input">
               <label>Email</label>
-              <input type="text" name="kh_email" id="kh_email" placeholder="nguyenag@gmail.com" />
+              {user_info ? (
+                <input style={{ fontWeight: 'bold' }} type="text" name="kh_email" id="kh_email" value={user_info.email} readOnly/>
+              ):(
+                <input type="text" name="kh_email" id="kh_email" placeholder="nguyenag@gmail.com" onChange={(e)=>setEmail(e.target.value)}/>
+              )}
             </div>
             <div className="input">
               <label>Ghi chú</label>
-              <input type="text" name="kh_note" id="kh_note" placeholder="Ghi chú..." />
+              <input type="text" name="kh_note" id="kh_note" placeholder="Ghi chú..." onChange={(e)=>setNote(e.target.value)}/>
             </div>
           </div>
 
           <h4>Hình thức thanh toán</h4>
-          <h5> Hiện tại chỉ hỗ trợ thanh toán khi nhận hàng</h5>
+          <h5> ***Hiện tại chỉ hỗ trợ thanh toán khi nhận hàng***</h5>
           <hr />
-          <button className="order-button" type="submit" name="order-button">Đặt hàng</button>
+          <button className="order-button" type="submit" name="order-button" onClick={handleSubmit}>Đặt hàng</button>
         </div>
 
         <div className="order-products">
