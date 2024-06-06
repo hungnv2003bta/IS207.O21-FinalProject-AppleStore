@@ -1,33 +1,62 @@
 import React,{ useEffect, useState } from 'react';
-import CartItems from '../Components/CartItems/CartItems.jsx';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './CSS/Checkout.css';
+import Navbar from '../Components/Navbar/Navbar'
 
 const Checkout = () => {
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [phone_number, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [note, setNote] = useState("");
-  
-  const handleSubmit = async (event) => {
-    console.warn(name, address, phone_number, email, note)
-    event.preventDefault(); 
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('address', address);
-    formData.append('phone_number', phone_number);
-    formData.append('email', email);
-    formData.append('note', note);
+  const [cartItems, setCartItems] = useState([]);
+  const [productDetails, setProductDetails] = useState([]);
+  const [totalSum, setTotalSum] = useState(0);
 
-    let result = await fetch ("http://localhost:8000/api/checkout", {
-      method: 'POST',
-      body: formData
-    });
-    alert("Đơn hàng được đặt thành công!")
-  }
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      try {
+        const user = JSON.parse(localStorage.getItem("user-info"));
+        const user_id= user.id; 
+        const response = await axios.get(`http://localhost:8000/api/cart/items/${user_id}`);
+
+        if (response.data && response.data.cartItems) {
+          setCartItems(response.data.cartItems);
+        } else {
+          console.error('Invalid response structure:', response.data);
+        }
+      } catch (error) {
+        console.error('Failed to fetch cart items:', error);
+      }
+    };
+
+    fetchCartItems();
+  }, []);
+
+  const getProductDetails = async () => {
+    try {
+      const productDetailsPromises = cartItems.map(item => {
+        return axios.get(`http://localhost:8000/api/products/${item.product_id}`);
+      });
+
+      const productDetailsResponses = await Promise.all(productDetailsPromises);
+      const productDetails = productDetailsResponses.map(response => response.data);
+      setProductDetails(productDetails);
+    } catch (error) {
+      console.error('Failed to fetch product details:', error);
+    }
+  };
+
+  useEffect(() => {
+    getProductDetails();
+  }, [cartItems])
+
+  useEffect(() => {
+    const sum = cartItems.reduce((total, item) => total + parseInt(item.total_money), 0);
+    setTotalSum(sum);
+  }, [cartItems, productDetails]);
+
+  
 
   return (
     <div className="container">
+      <Navbar />
       <div className="heading-checkout">
         <i className="fa fa-credit-card fa-4x" aria-hidden="true"></i>
         <h2>Thanh toán</h2>
@@ -78,19 +107,16 @@ const Checkout = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Apple Ipad 4 Wifi 16GB</td>
-                <td>11,800,000 VND</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>Apple iPhone 5 16GB White</td>
-                <td>14,990,000 VND</td>
-                <td>8</td>
-              </tr>
+              {cartItems.map((item, index) => (
+                <tr key={item.id}>
+                  <td>{productDetails[index]?.name}</td>
+                  <td>{productDetails[index]?.price} VND</td>
+                  <td>{item.qty}</td>
+                </tr>
+              ))}
               <tr>
                 <td colSpan="2"><strong>Tổng thành tiền</strong></td>
-                <td><strong>143,520,000 VND</strong></td>
+                <td><strong>{totalSum} VND</strong></td>
               </tr>
             </tbody>
           </table>

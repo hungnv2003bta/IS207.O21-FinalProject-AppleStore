@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductItemsController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\OrderDetailsController;
+use App\Http\Controllers\CartController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -47,3 +48,9 @@ Route::put('orders/{id}', [OrdersController::class, 'update']);
 Route::delete('orders/{id}', [OrdersController::class, 'destroy']);
 
 Route::get('orders/{orderId}/details', [OrderDetailsController::class, 'getOrderDetails']);
+
+Route::controller(CartController::class)->group(function () {
+    Route::post('/cart/add', 'addToCart');
+    Route::get('/cart/items/{id}', 'getCartItems');
+    Route::delete('/cart/remove/{id}', 'removeFromCart');
+});

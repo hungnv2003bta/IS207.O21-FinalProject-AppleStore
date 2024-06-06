@@ -14,6 +14,8 @@
     height: 80%;
     object-fit: cover;
     margin-right: 45px;
+    background-color: transparent;
+    mix-blend-mode: multiply;
   }
   .item h4{
     color: #2c2c2c;

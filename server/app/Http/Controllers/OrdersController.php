@@ -7,12 +7,14 @@ use App\Models\orders;
 
 class OrdersController extends Controller
 {
+    // Get all orders
     public function index()
     {
         $orders = orders::all();
         return response()->json($orders);
     }
 
+    // Get a specific order
     public function show($id)
     {
         $order = orders::find($id);
@@ -22,6 +24,7 @@ class OrdersController extends Controller
         return response()->json($order);
     }
 
+    // Create a new order
     public function store(Request $request)
     {
         $order = new orders;
@@ -35,6 +38,7 @@ class OrdersController extends Controller
         return response()->json($order, 201);
     }
 
+    // Update an existing order
     public function update(Request $request, $id)
     {
         $order = orders::find($id);
@@ -43,7 +47,7 @@ class OrdersController extends Controller
         }
 
         $validatedData = $request->validate([
-            'status' => 'required|integer',  // Ensuring 'status' is required and is an integer
+            'status' => 'required|integer', 
         ]);
 
         $order->status = $validatedData['status'];
@@ -52,6 +56,7 @@ class OrdersController extends Controller
         return response()->json($order);
     }
 
+    // Delete an order
     public function destroy($id)
     {
         $order = orders::find($id);
