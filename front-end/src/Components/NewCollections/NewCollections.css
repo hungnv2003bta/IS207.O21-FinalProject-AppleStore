@@ -42,6 +42,17 @@
   transform: translate(-30%, -50%);
   margin: 0 50px;
 }
-.slick-slide > div{
-  margin: 0 10px;
+.slick-dots {
+  position: static; /* Ensure dots are not positioned absolutely */
+  bottom: 0; /* Align dots to the bottom */
+  margin-right: 1000px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #333;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #007bff;
 }

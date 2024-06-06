@@ -1,4 +1,4 @@
-.item{
+.item-ipad{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,42 +9,43 @@
     transition: width 0.3s ease;
     height: 100%;
   }
-  .item img{
+  .item-ipad img{
     width: 70%;
     height: 80%;
     object-fit: cover;
-    margin-right: 45px;
+    background-color: transparent;
+    mix-blend-mode: multiply;
   }
-  .item h4{
+  .item-ipad h4{
     color: #2c2c2c;
     margin: 6px 0px;
   }
-  .item-prices{
+  .item-ipad-prices{
     display: flex;
     gap:20px;
   }
-  .item-price-new{
+  .item-ipad-price-new{
     color: #2c2c2c;
     font-size: 18px;
     font-weight: 600;
   }
-  .item-price-old{
+  .item-ipad-price-old{
     color: #8c8c8c;
     font-size:18px;
     font-weight: 500;
     text-decoration: line-through;
   }
-  .item:hover {
+  .item-ipad:hover {
     border-color: #333; 
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   }
-  .storage-options {
+  .ipad-storage-options {
     display: flex;
     justify-content: space-around;
     margin: 20px;
   }
-  .storage-options button {
+  .ipad-storage-options button {
     padding: 5px 10px;
     margin-right: 10px;
     border: 1px solid #ccc;
@@ -53,11 +54,43 @@
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  .storage-options button.selected {
+  .ipad-storage-options button.selected {
     background-color: #a5a6a7;
     color: white;
     border-color: #cfcfcf;
   }
-  .storage-options button:hover {
+  .ipad-storage-options button:hover {
     background-color: #f0f0f0;
+  }
+  .ipad-color-options {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  
+  .ipad-color-options button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .ipad-color-options button.xanh-duong {
+    background-color: #77a9de;
+  }
+  
+  .ipad-color-options button.bac {
+    background-color: #a0a0a0;
+  }
+  
+  .ipad-color-options button.kem {
+    background-color: #f4f8c4;
+  }
+  
+  .ipad-color-options button.selected {
+    border: 3px solid #333; /* Hiển thị nút được chọn */
   }
