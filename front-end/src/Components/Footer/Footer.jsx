@@ -27,22 +27,22 @@ const Footer = () => {
 
           <div className="sb__footer-links-div">
             <h4>HỖ TRỢ KH</h4>
-            <a href="!#">
+            <a href="/delivery">
               <p>Chính sách giao hàng</p>
             </a>
-            <a href="!#">
+            <a href="/pay">
               <p>Hướng dẫn thanh toán</p>
             </a>
-            <a href="!#">
+            <a href="/shopping">
               <p>Hướng dẫn mua hàng online</p>
             </a>
           </div>
           <div className="sb__footer-links-div">
             <h4>6TAO</h4>
-            <a href="!#">
+            <a href="Recruitment">
               <p>Tuyển dụng</p>
             </a>
-            <a href="!#">
+            <a href="In4">
               <p>Thông tin chung</p>
             </a>
           </div>
@@ -58,10 +58,7 @@ const Footer = () => {
             </p>
           </div>
           <div class="sb__footer-below-links">
-            <a href="!#"><div><p>Terms & Conditions</p></div></a>
-            <a href="!#"><div><p>Privacy</p></div></a>
-            <a href="!#"><div><p>Security</p></div></a>
-            <a href="!#"><div><p>Cookie Delaration</p></div></a>
+            <div><p>Địa chỉ: IS207.O21 - Đại học Công Nghệ Thông Tin TPHCM</p></div>
           </div>
         </div>
       </div>

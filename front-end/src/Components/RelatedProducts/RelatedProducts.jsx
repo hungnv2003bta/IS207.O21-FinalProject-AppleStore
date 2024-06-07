@@ -35,8 +35,26 @@ const RelatedProducts = ({ category, id }) => {
         <div className="related-product">
           <Slider ref={slider} {...settings}>
             {relatedProducts.map((item, i) => {
-              return <Homepage key={i} id={item.id} name={item.name} product_image={item.product_image} price={item.price} discount={item.discount} />;
-            })}
+                const priceWithoutCommas = item.price.replace(/,/g, '');
+
+                const price = parseFloat(priceWithoutCommas);
+
+                if (isNaN(price)) {
+                  console.error('Invalid price:', item.price);
+                  return null; 
+                }
+                const discountedPrice = price * (1 - item.discount / 100);
+                const formattedDiscountedPrice = discountedPrice.toLocaleString();
+                const formattedPrice = price.toLocaleString();
+                return <Homepage 
+                key={i} 
+                id={item.id} 
+                name={item.name} 
+                product_image={item.product_image} 
+                price={formattedPrice} 
+                discount={item.discount} 
+                discountedPrice={formattedDiscountedPrice}/>
+              })}
           </Slider>
         </div>
         {relatedProducts.length > 1 && (

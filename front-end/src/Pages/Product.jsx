@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
 import { ShopContext } from '../Context/ShopContext';
 import { useParams } from 'react-router-dom';
-import Breadcrum from '../Components/Breadcrums/Breadcrum';
 import ProductDisplay from '../Components/ProductDisplay/ProductDisplay';
-import DescriptionBox from '../Components/DescriptionBox/DescriptionBox';
 import RelatedProducts from '../Components/RelatedProducts/RelatedProducts';
 import Navbar from '../Components/Navbar/Navbar';
 
@@ -19,7 +17,6 @@ const Product = () => {
       <Navbar />
       <div>
         <ProductDisplay product={product} />
-        <DescriptionBox />
         {product && <RelatedProducts category={category} id={id} />}
       </div>
     </>

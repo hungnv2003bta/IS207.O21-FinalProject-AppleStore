@@ -17,7 +17,7 @@ const Ipad = (props) => {
       <h4>{props.name}</h4>
       <div className="item-mac-prices">
         <div className="item-mac-price-new">
-          <strong>{props.discount}</strong>
+          <strong>{props.discountedPrice}</strong>
         </div>
         <div className="item-mac-price-old">
           {props.price}

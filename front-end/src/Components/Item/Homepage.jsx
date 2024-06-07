@@ -9,7 +9,7 @@ const Homepage = (props) => {
       <h4>{props.name}</h4>
       <div className="item-homepage-prices">
         <div className="item-homepage-price-new">
-          <strong>{props.discount}</strong>
+          <strong>{props.discountedPrice}</strong>
         </div>
         <div className="item-homepage-price-old">
           {props.price}

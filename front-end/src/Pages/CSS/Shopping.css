@@ -1,0 +1,65 @@
+.shoppingContainer {
+    padding: 20px;
+    background-color: white;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.title {
+    color: #333;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+h1 {
+    color: #444;
+    font-size: 1.25em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #666;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.cach {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+#luuy {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+strong {
+    color: #333;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .shopping {
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    .title {
+        font-size: 1.2em;
+    }
+
+    h1 {
+        font-size: 1em;
+    }
+
+    p {
+        font-size: 0.9em;
+    }
+}

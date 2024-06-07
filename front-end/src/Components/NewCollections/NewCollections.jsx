@@ -45,13 +45,31 @@ const NewCollections = () => {
         </div>
         <div className="collections">
           <Slider ref={slider} {...settings}>
-            {/* Lặp qua 5 sản phẩm có ID lớn nhất */}
             {products
-              .sort((a, b) => b.id - a.id) // Sắp xếp theo ID giảm dần
-              .slice(0, 5) // Chọn 5 sản phẩm đầu tiên
+              .sort((a, b) => b.id - a.id)
+              .slice(0, 5)
               .map((item, i) => {
-                return <Homepage key={i} id={item.id} name={item.name} product_image={item.product_image} price={item.price} discount={item.discount} />
+                const priceWithoutCommas = item.price.replace(/,/g, '');
+
+                const price = parseFloat(priceWithoutCommas);
+
+                if (isNaN(price)) {
+                  console.error('Invalid price:', item.price);
+                  return null; 
+                }
+                const discountedPrice = price * (1 - item.discount / 100);
+                const formattedDiscountedPrice = discountedPrice.toLocaleString();
+                const formattedPrice = price.toLocaleString();
+                return <Homepage 
+                  key={i} 
+                  id={item.id} 
+                  name={item.name} 
+                  product_image={item.product_image} 
+                  price={formattedPrice} 
+                  discount={item.discount} 
+                  discountedPrice={formattedDiscountedPrice}/>
               })}
+
           </Slider>
         </div>
         <div>
