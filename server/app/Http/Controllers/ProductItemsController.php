@@ -40,15 +40,13 @@ class ProductItemsController extends Controller
     // Update a product item
     public function updateProductItem(Request $req, $id) {
         $validatedData = $req->validate([
-            'product_id' => 'integer|exists:products,id',
-            'qty_in_stock' => 'integer'
+            'qty_in_stock' => 'integer' // Updated validation rule
         ]);
-
+    
         $item = product_items::find($id);
         if ($item) {
             $item->update([
-                'product_id' => $req->input('product_id', $item->product_id),
-                'qty_in_stock' => $req->input('qty_in_stock', $item->qty_in_stock),
+                'qty_in_stock' => $item->qty_in_stock - $req->qty_in_stock,
             ]);
             return response()->json($item);
         } else {

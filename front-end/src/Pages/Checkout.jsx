@@ -79,27 +79,51 @@ const Checkout = () => {
     }
     
     try {
-      const response = await fetch("http://localhost:8000/api/orders", {
-          method: 'POST',
-          body: formData
-      });
+      // Use Promise.all to wait for all asynchronous requests to complete
+      await Promise.all(cartItems.map(async (item) => {
+          try {
+              const response = await axios.put(`http://localhost:8000/api/product-items/${item.product_id}`, {
+                  qty_in_stock: item.qty
+              });
 
-      if (response.ok) {
-          alert("Đặt hàng thành công!");
-          cartItems.forEach((item) => {
-              if (item.user_id === user_id) {
-                  axios.delete(`http://localhost:8000/api/cart/remove/${item.id}`);
+              console.log('qty_enough', response.data.qty_in_stock);
+              if (response.data.qty_in_stock < 0) {
+                  throw new Error("Số lượng sản phẩm không đủ!");
               }
-          });
-          window.location.reload();
+              else{
+                const response = await fetch("http://localhost:8000/api/orders", {
+                  method: 'POST',
+                  body: formData
+                });
           
-      } else {
-          alert("Đặt hàng thất bại.");
-      }
+                if (response.ok) {
+                    alert("Đặt hàng thành công!");
+                    console.log('cart details', cartItems);
+                    console.log('product details', productDetails);
+                    await Promise.all(cartItems.map(async (item) => {
+                        if (item.user_id === user_id) {
+                            await axios.delete(`http://localhost:8000/api/cart/remove/${item.id}`);
+                            await axios.put(`http://localhost:8000/api/product-items/${item.product_id}`, {
+                                qty_in_stock: item.qty
+                            });
+                        }
+                    }));
+                    window.location.reload();
+                } else {
+                    alert("Đặt hàng thất bại.");
+                }
+
+              }
+          } catch (error) {
+              console.error('Error updating quantity:', error);
+              throw error; // Propagate the error to the outer catch block
+          }
+      }));
   } catch (error) {
       console.error("Network error:", error);
-      alert("Failed to place order due to network error.");
+      alert("Đặt hàng thất bại vì số lượng sản phẩm trong kho ");
   }
+  
 
   };
 
