@@ -36,6 +36,19 @@ function Search() {
                 }
               })
               .map((val) => {
+                const priceWithoutCommas = val.price.replace(/,/g, '');
+                // Parse the price value as a float
+                const price = parseFloat(priceWithoutCommas);
+                // Check if the price is a valid number
+                if (isNaN(price)) {
+                  console.error('Invalid price:', val.price);
+                  return null;
+                }
+                // Calculate discounted price
+                const discountedPrice = price * (1 - val.discount / 100);
+                // Format prices with commas
+                const formattedPrice = price.toLocaleString();
+                const formattedDiscountedPrice = discountedPrice.toLocaleString();
                 return (
                   <Link to={`/product/${val.id}`} key={val.id}>
                     <div className='template'>
@@ -43,8 +56,8 @@ function Search() {
                       <div className='infor'>
                         <h3>{val.name}</h3>
                         <div className='price'>
-                          <p className='new-price'>{val.discount} VNĐ</p>
-                          <p className='old-price'>{val.price} VNĐ</p>
+                          <p className='new-price'>{formattedDiscountedPrice}đ</p>
+                          <p className='old-price'>{formattedPrice}đ</p>
                         </div>
                       </div>
                     </div>

@@ -15,8 +15,6 @@
     object-fit: cover;
     margin-bottom: 20px;
     margin-left: 45px;
-    background-color: transparent;
-    mix-blend-mode: multiply;
   }
   .item-homepage h4{
     color: #2c2c2c;

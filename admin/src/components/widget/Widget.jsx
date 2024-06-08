@@ -45,35 +45,6 @@ const Widget = ({ type, amount }) => {
         ),
       };
       break;
-    case "earning":
-      data = {
-        title: "EARNINGS",
-        isMoney: true,
-        link: "View net earnings",
-        icon: (
-          <MonetizationOnOutlinedIcon
-            className="icon"
-            style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
-          />
-        ),
-      };
-      break;
-    case "balance":
-      data = {
-        title: "BALANCE",
-        isMoney: true,
-        link: "See details",
-        icon: (
-          <AccountBalanceWalletOutlinedIcon
-            className="icon"
-            style={{
-              backgroundColor: "rgba(128, 0, 128, 0.2)",
-              color: "purple",
-            }}
-          />
-        ),
-      };
-      break;
     default:
       break;
   }
@@ -83,19 +54,15 @@ const Widget = ({ type, amount }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counternumber">
-          {amount} {data.isMoney && "đ"}
+          {amount !== undefined ? amount.toLocaleString() : "0"} {data.isMoney && "đ"}
         </span>
-        <span className="link">{data.link}</span>
       </div>
       <div className="right">
-        <div className="percentage positive">
-          <KeyboardArrowUpIcon />
-          {diff} %
-        </div>
         {data.icon}
       </div>
     </div>
   );
+  
 };
 
 export default Widget;

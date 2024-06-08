@@ -84,7 +84,7 @@ const Products = () => {
           <input type="text" placeholder="Name" onChange={(e)=>setName(e.target.value)}/>
 
           <label htmlFor="category">Category:</label>
-          <input type="text" placeholder="Category" onChange={(e)=>setCategory(e.target.value)}/>
+          <input type="text" placeholder="Category (Bắt buộc là: iPhone, iPad, Mac)" onChange={(e)=>setCategory(e.target.value)}/>
 
           <label htmlFor="color">Color:</label>
           <input type="text" placeholder="Color" onChange={(e)=>setColor(e.target.value)} />

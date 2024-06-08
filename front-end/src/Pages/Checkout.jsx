@@ -103,9 +103,9 @@ const Checkout = () => {
                     await Promise.all(cartItems.map(async (item) => {
                         if (item.user_id === user_id) {
                             await axios.delete(`http://localhost:8000/api/cart/remove/${item.id}`);
-                            await axios.put(`http://localhost:8000/api/product-items/${item.product_id}`, {
-                                qty_in_stock: item.qty
-                            });
+                            // await axios.put(`http://localhost:8000/api/product-items/${item.product_id}`, {
+                            //     qty_in_stock: item.qty
+                            // });
                         }
                     }));
                     window.location.reload();
