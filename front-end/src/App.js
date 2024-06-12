@@ -25,6 +25,7 @@ import ForgetPassword from './Pages/ForgetPassword';
 import UserProfile from './Pages/UserProfile';
 import ChangePassword from './Pages/ChangePassword';
 import ProductDisplay from './Components/ProductDisplay/ProductDisplay';
+import HistoryOder from './Pages/HistoryOder';
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
             <Route path='/shopping' element={<Shopping/>}/>
             <Route path='/in4' element={<In4/>}/>
             <Route path='/recruitment' element={<Recruitment/>}/>
+            <Route path='/historyOder' element={<HistoryOder/>}/>
           </Routes>
         </div>
       <Footer/>
