@@ -77,9 +77,9 @@ const CartItems = () => {
           <div className="cartitems-format">
             <img src={"http://localhost:8000/" + productDetails[index]?.product_image} className="carticon-product-icon"/>
             <p>{productDetails[index]?.name}</p>
-            <p>${productDetails[index]?.price}</p>
+            <p>{productDetails[index]?.price}đ</p>
             <button className="cartitems-quantity">{item.qty}</button>
-            <p>${item.total_money}</p>
+            <p>{item.total_money}đ</p>
             <i className='bx bx-trash' onClick={() => removeFromCart(item.id)}></i>
           </div>
           <hr />

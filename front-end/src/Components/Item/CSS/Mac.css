@@ -13,9 +13,6 @@
     width: 70%;
     height: 80%;
     object-fit: cover;
-    margin-right: 45px;
-    background-color: transparent;
-    mix-blend-mode: multiply;
   }
   .item-mac h4{
     color: #2c2c2c;

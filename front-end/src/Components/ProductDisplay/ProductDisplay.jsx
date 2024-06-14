@@ -8,8 +8,8 @@ import ProductModal from '../ProductModal/ProductModal';
 const ProductDisplay = (props) => {
   const { product } = props;
   const [selectedStorage, setSelectedStorage] = useState('128GB');
-  const [userId, setUserId] = useState({});
-  const [productId, setProductId] = useState({});
+  const [userId, setUserId] = useState(null);
+  const [productId, setProductId] = useState(null);
   const [qty, setQty] = useState(1);
   const [totalMoney, setTotalMoney] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,7 +17,9 @@ const ProductDisplay = (props) => {
   useEffect(() => {
     console.log('hung', product);
     const user = JSON.parse(localStorage.getItem("user-info"));
-    setUserId(user.id);
+    if (user) {
+      setUserId(user.id);
+    }
 
     if (product) {
       setProductId(product.id);
@@ -29,10 +31,24 @@ const ProductDisplay = (props) => {
 
   const handleStorageClick = (storage) => {
     setSelectedStorage(storage);
-  }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (!userId) {
+      toast.error('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      return;
+    }
 
     const formData = new FormData();
     formData.append('user_id', userId);
@@ -42,7 +58,7 @@ const ProductDisplay = (props) => {
 
     axios.post('http://localhost:8000/api/cart/add', formData)
       .then((response) => {
-        toast('Đã thêm sản phẩm vào giỏ hàng!', {
+        toast.success('Đã thêm sản phẩm vào giỏ hàng!', {
           position: "bottom-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -52,7 +68,7 @@ const ProductDisplay = (props) => {
           progress: undefined,
           theme: "light",
         });
-      })
+      });
   };
 
   const toggleModal = () => {
@@ -83,10 +99,10 @@ const ProductDisplay = (props) => {
         <h1>{product ? product.name : ''}</h1>
         <div className="productdisplay-right-prices">
           <div className="productdisplay-right-price-new">
-            {product ? ((1 - product.discount / 100) * product.price).toLocaleString() : ''}
+            {product ? ((1 - product.discount / 100) * product.price).toLocaleString() : ''}đ
           </div>
           <div className="productdisplay-right-price-old">
-            {product ? (product.price).toLocaleString() : ''}
+            {product ? (product.price).toLocaleString() : ''}đ
           </div>
         </div>
         <div className="productdisplay-right-storage">
@@ -103,7 +119,10 @@ const ProductDisplay = (props) => {
           </button>
           {isModalOpen && <ProductModal product={product} onClose={toggleModal} />}
         </div>
-        <button className='addtocart' onClick={handleSubmit}>
+        <button
+          className='addtocart'
+          onClick={handleSubmit}
+        >
           Thêm vào giỏ hàng
         </button>
       </div>

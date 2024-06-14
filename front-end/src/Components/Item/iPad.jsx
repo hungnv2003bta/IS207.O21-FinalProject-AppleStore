@@ -19,10 +19,10 @@ const Ipad = (props) => {
       <h4>{props.name}</h4>
       <div className="item-ipad-prices">
         <div className="item-ipad-price-new">
-          <strong>{props.discountedPrice}</strong>
+          <strong>{props.discountedPrice}đ</strong>
         </div>
         <div className="item-ipad-price-old">
-          {props.price}
+          {props.price}đ
         </div>
       </div>
       </Link>
