@@ -79,7 +79,7 @@ const CartItems = () => {
             <p>{productDetails[index]?.name}</p>
             <p>{productDetails[index]?.price}đ</p>
             <button className="cartitems-quantity">{item.qty}</button>
-            <p>{item.total_money}đ</p>
+            <p>{item.total_money.toLocaleString()}đ</p>
             <i className='bx bx-trash' onClick={() => removeFromCart(item.id)}></i>
           </div>
           <hr />

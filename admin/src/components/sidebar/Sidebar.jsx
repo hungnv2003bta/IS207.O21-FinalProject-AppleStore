@@ -43,29 +43,30 @@ const Sidebar = () => {
                             <span>Users</span>
                         </Link>
                     </li>
-                    <li onClick={() => setIsProductsOpen(!isProductsOpen)} style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
-                        <StoreIcon className="icon"/>
-                        <span>Products</span>
-                        <ExpandMoreIcon className="icon-expand"/>
+                    <li>
+                        <Link to="/products" style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}>
+                            <StoreIcon className="icon"/>
+                            <span>Manage products</span>
+                        </Link>
                     </li>
-                    {isProductsOpen && (
-                        <div style={{ display: "block", paddingLeft: "20px" }}>
-                            <Link to="/products" className="dropdown-item">Management</Link>
-                            <Link to="/add-product" className="dropdown-item">Add Product</Link>
-                        </div>
-                    )}
-                    <li onClick={() => setIsOrdersOpen(!isOrdersOpen)} style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
-                        <CreditCardIcon className="icon"/>
-                        <span>Orders</span>
-                        <ExpandMoreIcon className="icon-expand"/>
+                    <li>
+                        <Link to="/add-product" style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}>
+                            <StoreIcon className="icon"/>
+                            <span>Add products</span>
+                        </Link>
                     </li>
-                    {isOrdersOpen && (
-                        <div style={{ display: "block", paddingLeft: "20px" }}>
-                            <Link to="/orderConfirmed" className="dropdown-item">Đã xác nhận</Link>
-                            {/* <Link to="/orderDelivering" className="dropdown-item">Đang giao</Link> */}
-                            <Link to="/orderUnconfirmed" className="dropdown-item">Chưa xác nhận</Link>
-                        </div>
-                    )}
+                    <li>
+                        <Link to="/orderConfirmed" style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}>
+                            <CreditCardIcon className="icon"/>
+                            <span>New orders</span>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/orderUnconfirmed" style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}>
+                            <CreditCardIcon className="icon"/>
+                            <span>Confirmed orders</span>
+                        </Link>
+                    </li>
                     <li>
                         <Link to="/orderDelivering" style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}>
                             <LocalShippingIcon className="icon"/>
