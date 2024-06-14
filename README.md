@@ -4,3 +4,4 @@ Mỗi lần clone code về phải chạy các lệnh:
 - rm -r public/products trong server 
 - php artisan storage:link trong server để cấp quyền truy cập hình ảnh
 - npm install react-scripts trong front-end và admin
+.

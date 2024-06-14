@@ -27,6 +27,7 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/admin', 'getAdmin');
     Route::post('/change-password', 'changePassword');
     Route::post('/change-user-password', 'changeUserPassword');
+    Route::post('/forget-password', 'forgetPassword');
 });
 
 Route::get('/products', [ProductController::class, 'getAllProducts']);

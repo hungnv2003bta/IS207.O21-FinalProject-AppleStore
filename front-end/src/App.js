@@ -25,6 +25,7 @@ import ForgetPassword from './Pages/ForgetPassword';
 import UserProfile from './Pages/UserProfile';
 import ChangePassword from './Pages/ChangePassword';
 import ProductDisplay from './Components/ProductDisplay/ProductDisplay';
+import HistoryOrder from './Pages/HistoryOrder';
 
 function App() {
   return (
@@ -37,7 +38,7 @@ function App() {
             <Route path='/iPhone' element={<ShopCategoryIphone banner={iphone_banner} category="iPhone"/>}/>
             <Route path='/iPad' element={<ShopCategoryIpad banner={ipad_banner} category="iPad"/>}/>
             <Route path="product" element={<Product/>}>
-              <Route path=":productId" element={<Product/>}/>
+              <Route path=":productId" element={<ProductDisplay/>}/>
             </Route>
             <Route path='/Search' element={<Search/>}/>
             <Route path='/cart' element={<Protected Cmp={Cart}/>}/>
@@ -52,6 +53,7 @@ function App() {
             <Route path='/shopping' element={<Shopping/>}/>
             <Route path='/in4' element={<In4/>}/>
             <Route path='/recruitment' element={<Recruitment/>}/>
+            <Route path='/historyOrder' element={<HistoryOrder/>} />
           </Routes>
         </div>
       <Footer/>

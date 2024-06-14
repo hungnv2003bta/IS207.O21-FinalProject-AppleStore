@@ -73,17 +73,19 @@ const Navbar = () => {
       </ul>
       <div className="nav-search-cart">
         <Link to='/search'><button><i className='bx bx-search' /></button></Link>
-        <Link to='/cart'><img src={cart_icon} alt="cart-icon" className="cart-icon" /></Link>
+        {/* <Link to='/cart'><img src={cart_icon} alt="cart-icon" className="cart-icon" /></Link> */}
+        <Link to='/cart'><i class='bx bx-cart cart-icon'></i></Link>
         <div className="nav-cart-count">{totalItems}</div>
         {
-          localStorage.getItem('user-info') ?
-            <NavDropdown title={<i className='bx bx-user' onClick={()=>setShow(!show)}/>} id="nav-dropdown" className="nav-profile">
-              {show?<div id="nav-dropdown">
-                <NavDropdown.Item onClick={() => navigate('/profile')}>Profile</NavDropdown.Item>
-                <NavDropdown.Item onClick={() => navigate('/changepassword')}>Thay đổi mật khẩu</NavDropdown.Item>
-                <NavDropdown.Item onClick={Logout}>Đăng xuất</NavDropdown.Item>
-              </div>:null}
-            </NavDropdown>
+          localStorage.getItem('user-info') ? 
+            <Link to='/profile'><i className='bx bx-user' /></Link>
+            // <NavDropdown title={<i className='bx bx-user' onClick={()=>setShow(!show)}/>} id="nav-dropdown" className="nav-profile">
+            //   {show?<div id="nav-dropdown">
+            //     <NavDropdown.Item onClick={() => navigate('/profile')}>Profile</NavDropdown.Item>
+            //     <NavDropdown.Item onClick={() => navigate('/changepassword')}>Thay đổi mật khẩu</NavDropdown.Item>
+            //     <NavDropdown.Item onClick={Logout}>Đăng xuất</NavDropdown.Item>
+            //   </div>:null}
+            // </NavDropdown>
             :
             <div className='nav-login'><Link to='/login'><button>Đăng Nhập</button></Link></div>
         }

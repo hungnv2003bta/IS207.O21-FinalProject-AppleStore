@@ -24,8 +24,7 @@
   font-weight: 400;
 }
 .cart-icon{
-  width:27px;
-  height: 25px;
+  font-size: 28px;
 }
 .bx-search{
   font-size: 24px;
@@ -53,17 +52,15 @@
   cursor: pointer;
 }
 .nav-search-cart button{
-  background-color: #f4f4f4;
+  background-color: #fdfcfd;
   border: none;
   cursor: pointer;
 }
 .nav-search-cart .bx-search:hover{
-  color: #706f6f;
-  width: 27px;
+  color: #f1356d;
 }
 .cart-icon:hover{
-  background-color: #e0dddd;
-  width: 27px;
+  color: #f1356d;
 }
 .nav-cart-count{
   width: 18px;
@@ -97,6 +94,10 @@
 .bx-user{
   font-size: 24px;
   color: #000000;
+}
+
+.bx-user:hover{
+  color: #f1356d;
 }
 
 .nav-profile {

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\users;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ForgetPasswordMail;
+use App\Mail\HelloMail; 
 
 class UserController extends Controller
 {
@@ -48,24 +52,32 @@ class UserController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {   
         $validatedData = $request->validate([
-            'name' => 'required|max:100',
-            'email' => 'required|email|max:150|unique:users',
-            'phone_number' => 'required|unique:users|max:20',
-            'password' => 'required|min:6|max:80',
+            'name' => 'required',
+            'email' => 'required|email|max:100',
+            'phone_number' => 'required|size:10',
+            'password' => 'required|min:6|max:32',
             'role_id' => 'sometimes|integer'
         ]);
 
-        $user = users::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'phone_number' => $validatedData['phone_number'],
-            'password' => bcrypt($validatedData['password']),
-            'role_id' => $validatedData['role_id'] ?? 1  // Default to 1 if not provided
-        ]);
+        // Check if email or phone number already exists
+        $emailExists = users::where('email', $validatedData['email'])->exists();
+        $phoneExists = users::where('phone_number', $validatedData['phone_number'])->exists();
 
-        return response()->json($user, 201);
+        if ($emailExists || $phoneExists) {
+            return response()->json(['message' => 'Email or phone number already exists'], 409);
+        }else{
+            $user = users::create([
+                'name' => $validatedData['name'],
+                'email' => $validatedData['email'],
+                'phone_number' => $validatedData['phone_number'],
+                'password' => bcrypt($validatedData['password']),
+                'role_id' => $validatedData['role_id'] ?? 1
+            ]);
+    
+            return response()->json($user, 201);
+        }
     }
 
     public function show($id)
@@ -158,5 +170,31 @@ class UserController extends Controller
         $user->save();
 
         return response()->json(['message' => 'Password successfully updated']);
+    }
+
+    // Forget password
+    public function forgetPassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        // Find the user by email
+        $user = users::where('email', $request->input('email'))->first();
+
+        if (!$user) {
+            return response()->json(['error' => 'Email not exist!!'], 401);
+        }
+
+        #Generate random token
+        $newPassword = Str::random(5);
+        $user->password = Hash::make($newPassword);
+        $user->save();
+
+        // Send email to user
+        Mail::to($user->email)->send(new ForgetPasswordMail($user->email, $newPassword, '6Tao Shop'));
+        
+        // unset($user->password);
+        return response()->json(['message' => 'A temporary password has been sent to your email.']);
     }
 }

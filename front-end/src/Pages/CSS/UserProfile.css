@@ -1,41 +1,195 @@
-/* UserProfile.css */
+.avatar-img {
+  display: block;
+  margin: 0 auto;
+  width: 80px;  
+  height: 80px; 
+  border-radius: 25%; 
+  object-fit: cover;
+  border: 2px solid #f1356d; 
+}
+
 body {
-  background-color: #f4f4f4;
-}
-
-.userProfile {
+  background-color: #fdfcfd;
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.userProfile-container {
-  max-width: 600px;
-  margin: 40px auto;
-  background: #ffffff;
+/* User profile container styling */
+.userProfile {
+  background: #fdfcfd;
+  padding: 0px;
+}
+
+.userProfile-container, .historyOrder-container {
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 40px;
+  width: 70%;
+  border-radius: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.userProfile-container h1 {
-  text-align: center;
+.row {
+  display: flex;
+  width: 100%;
+}
+
+.menu-bar {
+  width: 15%;
+  height: 90vh;
+  padding: 10px;
+  margin: 40px 0 40px 2%;
+  border-radius: 15px;
+  background-color: #f9e2f1;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+
+.nav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav li {
+  margin-bottom: 10px;
+}
+
+.nav a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
   color: #333;
-  margin-bottom: 20px;
+  border-radius: 10px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.userProfile-container p {
+.nav a:hover {
+  background-color: #f1356d;
+  color: #ffffff;
+}
+
+.nav a.active {
+  background-color: #f1356d;
+  color: #ffffff;
+}
+
+.userProfile-avatar-default, .short-customerInfo .user-name {
+  text-align: center;
+  color: #f1356d;
+}
+
+.avt-user .avatar-img {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  height: 120px;
+}
+
+.userProfile-container p, .historyOrder-container p {
   margin: 10px 0;
-  color: #121111;
+  color: #333;
   line-height: 1.6;
   font-size: 18px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
 }
 
-.change-password {
+.historyOrder-container p {
+  border: none;
+}
+
+.short-profile {
+  display: flex;
+  text-align: left;
+}
+
+.short-customerInfo {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+}
+
+.order-data {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background: #efefef;
+}
+
+.order-qnt,
+.order-total-money {
+  flex: 1;
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.order-qnt {
+  border-right: 1px solid #ccc;
+}
+
+.quantity,
+.total-money {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.order-data p {
+  margin: 0;
+}
+
+.quantity, .total-money {
+  font-size: 36pt;
+}
+
+.orders-status {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   margin-top: 20px;
-  border-top: 1px solid #ddd;
-  padding-top: 20px;
 }
 
-h3 {
+.box {
+  display: inline-block;
+  padding: 15px 20px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 14pt;
+}
+
+.box:hover {
+  background-color: #f0f0f0;
   color: #333;
-  margin-bottom: 10px;
+}
+
+.box.active {
+  background-color: #f1356d;
+  color: #ffffff;
+}
+
+p.quantity, p.total-money {
+  font-size: 36pt;
+}
+
+.userProfile-container button a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+  font-size: 18px;
+  border-radius: 2px solid #007bff;
+}
+
+.userProfile-container button a:hover {
+  color: #074384;
 }
