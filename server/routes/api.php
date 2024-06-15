@@ -47,6 +47,7 @@ Route::get('orders/{id}', [OrdersController::class, 'show']);
 Route::post('orders', [OrdersController::class, 'store']);
 Route::put('orders/{id}', [OrdersController::class, 'update']);
 Route::delete('orders/{id}', [OrdersController::class, 'destroy']);
+Route::get('orders/user/{userId}', [OrdersController::class, 'getOrderByUserId']);
 
 Route::get('orders/{orderId}/details', [OrderDetailsController::class, 'getOrderDetails']);
 

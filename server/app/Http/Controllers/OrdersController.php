@@ -79,4 +79,11 @@ class OrdersController extends Controller
         $order->delete();
         return response()->json(['message' => 'Order deleted successfully']);
     }
+
+    // get order with user id
+    public function getOrderByUserId($id)
+    {
+        $orders = orders::where('user_id', $id)->get();
+        return response()->json($orders);
+    }
 }
