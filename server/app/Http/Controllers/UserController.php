@@ -32,8 +32,11 @@ class UserController extends Controller
     }
     function login(Request $req){
         $user = users::where('email', $req->email)->first();
-        if (!$user || !Hash::check($req->password, $user->password)) {
-            return ['error' => 'Email hoặc mật khẩu không đúng!!'];
+        if (!$user) {
+            return ['error' => 'Email không tồn tại!!'];
+        }
+        if (!Hash::check($req->password, $user->password)) {
+            return ['error' => 'Mật khẩu không đúng!!'];
         }
         return $user;
     }

@@ -60,6 +60,67 @@ const Checkout = () => {
     setTotalSum(sum);
   }, [cartItems, productDetails]);
 
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+
+  //   const formData = new FormData();
+  //   formData.append('user_id', user_id);
+  //   formData.append('note', note);
+  //   formData.append('status', 0);
+  //   formData.append('total_money', totalSum);
+  //   formData.append('address', address);
+  //   if (cartItems && cartItems.length) {
+  //     cartItems.forEach((item, index) => {
+  //         formData.append(`cartItems[${index}][product_id]`, item.product_id);
+  //         formData.append(`cartItems[${index}][price]`, productDetails[index]?.price);
+  //         formData.append(`cartItems[${index}][qty]`, item.qty);
+  //         formData.append(`cartItems[${index}][total_money]`, item.total_money);
+  //     });
+  //   }
+    
+  //   try {
+  //     await Promise.all(cartItems.map(async (item) => {
+  //         try {
+  //             const response = await axios.put(`http://localhost:8000/api/product-items/${item.product_id}`, {
+  //                 qty_in_stock: item.qty
+  //             });
+
+  //             console.log('qty_enough', response.data.qty_in_stock);
+  //             if (response.data.qty_in_stock < 0) {
+  //                 throw new Error("Số lượng sản phẩm không đủ!");
+  //             }
+  //             else{
+  //               const response = await fetch("http://localhost:8000/api/orders", {
+  //                 method: 'POST',
+  //                 body: formData
+  //               });
+          
+  //               if (response.ok) {
+  //                   alert("Đặt hàng thành công!");
+  //                   console.log('cart details', cartItems);
+  //                   await Promise.all(cartItems.map(async (item) => {
+  //                       if (item.user_id === user_id) {
+  //                           await axios.delete(`http://localhost:8000/api/cart/remove/${item.id}`);
+  //                       }
+  //                   }));
+  //                   window.location.reload();
+  //               } else {
+  //                   alert("Đặt hàng thất bại.");
+  //               }
+
+  //             }
+  //         } catch (error) {
+  //             console.error('Error updating quantity:', error);
+  //             throw error; // Propagate the error to the outer catch block
+  //         }
+  //     }));
+  // } catch (error) {
+  //     console.error("Network error:", error);
+  //     alert("Đặt hàng thất bại vì số lượng sản phẩm trong kho ");
+  // }
+  
+
+  // };
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -70,62 +131,57 @@ const Checkout = () => {
     formData.append('total_money', totalSum);
     formData.append('address', address);
     if (cartItems && cartItems.length) {
-      cartItems.forEach((item, index) => {
-          formData.append(`cartItems[${index}][product_id]`, item.product_id);
-          formData.append(`cartItems[${index}][price]`, productDetails[index]?.price);
-          formData.append(`cartItems[${index}][qty]`, item.qty);
-          formData.append(`cartItems[${index}][total_money]`, item.total_money);
-      });
+        cartItems.forEach((item, index) => {
+            formData.append(`cartItems[${index}][product_id]`, item.product_id);
+            formData.append(`cartItems[${index}][price]`, productDetails[index]?.price);
+            formData.append(`cartItems[${index}][qty]`, item.qty);
+            formData.append(`cartItems[${index}][total_money]`, item.total_money);
+        });
     }
-    
+
     try {
-      // Use Promise.all to wait for all asynchronous requests to complete
-      await Promise.all(cartItems.map(async (item) => {
-          try {
-              const response = await axios.put(`http://localhost:8000/api/product-items/${item.product_id}`, {
-                  qty_in_stock: item.qty
-              });
+        // Kiểm tra số lượng sản phẩm trong kho trước khi đặt hàng
+        const qtyCheckResponses = await Promise.all(cartItems.map(async (item) => {
+            const response = await axios.put(`http://localhost:8000/api/product-items/${item.product_id}`, {
+                qty_in_stock: item.qty
+            });
+            return response.data.qty_in_stock;
+        }));
 
-              console.log('qty_enough', response.data.qty_in_stock);
-              if (response.data.qty_in_stock < 0) {
-                  throw new Error("Số lượng sản phẩm không đủ!");
-              }
-              else{
-                const response = await fetch("http://localhost:8000/api/orders", {
-                  method: 'POST',
-                  body: formData
-                });
-          
-                if (response.ok) {
-                    alert("Đặt hàng thành công!");
-                    console.log('cart details', cartItems);
-                    console.log('product details', productDetails);
-                    await Promise.all(cartItems.map(async (item) => {
-                        if (item.user_id === user_id) {
-                            await axios.delete(`http://localhost:8000/api/cart/remove/${item.id}`);
-                            // await axios.put(`http://localhost:8000/api/product-items/${item.product_id}`, {
-                            //     qty_in_stock: item.qty
-                            // });
-                        }
-                    }));
-                    window.location.reload();
-                } else {
-                    alert("Đặt hàng thất bại.");
+        const isQtyEnough = qtyCheckResponses.every(qty_in_stock => qty_in_stock >= 0);
+
+        if (!isQtyEnough) {
+            throw new Error("Số lượng sản phẩm không đủ!");
+        }
+
+        // Gửi đơn hàng một lần
+        const response = await fetch("http://localhost:8000/api/orders", {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            alert("Đặt hàng thành công!");
+            console.log('cart details', cartItems);
+
+            // Xóa các sản phẩm trong giỏ hàng sau khi đặt hàng thành công
+            await Promise.all(cartItems.map(async (item) => {
+                if (item.user_id === user_id) {
+                    await axios.delete(`http://localhost:8000/api/cart/remove/${item.id}`);
                 }
+            }));
 
-              }
-          } catch (error) {
-              console.error('Error updating quantity:', error);
-              throw error; // Propagate the error to the outer catch block
-          }
-      }));
-  } catch (error) {
-      console.error("Network error:", error);
-      alert("Đặt hàng thất bại vì số lượng sản phẩm trong kho ");
-  }
-  
+            window.location.reload();
+        } else {
+            alert("Đặt hàng thất bại.");
+        }
 
-  };
+    } catch (error) {
+        console.error("Network error:", error);
+        alert("Đặt hàng thất bại vì số lượng sản phẩm trong kho không đủ.");
+    }
+};
+
 
   useEffect(() => {
     if(user_info){
