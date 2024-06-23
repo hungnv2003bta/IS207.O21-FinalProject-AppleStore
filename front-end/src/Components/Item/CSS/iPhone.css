@@ -1,4 +1,4 @@
-.item{
+.item-iphone{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,42 +9,41 @@
   transition: width 0.3s ease;
   height: 100%;
 }
-.item img{
+.item-iphone img{
   width: 70%;
   height: 80%;
   object-fit: cover;
-  margin-right: 45px;
 }
-.item h4{
+.item-iphone h4{
   color: #2c2c2c;
   margin: 6px 0px;
 }
-.item-prices{
+.item-iphone-prices{
   display: flex;
   gap:20px;
 }
-.item-price-new{
-  color: #e10101;
+.item-iphone-price-new{
+  color: #2c2c2c;
   font-size: 18px;
   font-weight: 600;
 }
-.item-price-old{
+.item-iphone-price-old{
   color: #8c8c8c;
   font-size:18px;
   font-weight: 500;
   text-decoration: line-through;
 }
-.item:hover {
+.item-iphone:hover {
   border-color: #333; 
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
-.storage-options {
+.iphone-storage-options {
   display: flex;
   justify-content: space-around;
   margin: 20px;
 }
-.storage-options button {
+.iphone-storage-options button {
   padding: 5px 10px;
   margin-right: 10px;
   border: 1px solid #ccc;
@@ -53,11 +52,47 @@
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.storage-options button.selected {
+.iphone-storage-options button.selected {
   background-color: #a5a6a7;
   color: white;
   border-color: #cfcfcf;
 }
-.storage-options button:hover {
+.iphone-storage-options button:hover {
   background-color: #f0f0f0;
+}
+.iphone-color-options {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.iphone-color-options button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.iphone-color-options button.xanh-duong {
+  background-color: #224366;
+}
+
+.iphone-color-options button.trang {
+  background-color: #f7fddd;
+}
+
+.iphone-color-options button.xanh-la {
+  background-color: #c4f9d1;
+}
+
+.iphone-color-options button.hong {
+  background-color: #f89fcc;
+}
+
+.iphone-color-options button.selected {
+  border: 3px solid #333; /* Hiển thị nút được chọn */
 }

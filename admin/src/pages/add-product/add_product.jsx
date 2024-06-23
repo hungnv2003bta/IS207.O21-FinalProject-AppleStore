@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../../components/sidebar/Sidebar';
 import './add_product.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Products = () => {
   const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
   const [color, setColor] = useState("");
   const [memory, setMemory] = useState("");
   const [RAM, setRam] = useState("");
@@ -20,7 +23,7 @@ const Products = () => {
   const [qty_in_stock, setQtyInStock] = useState("");
 
   const handleSubmit = async (event) => {
-    console.warn(name, color, memory, RAM, chip, display_size, display_technology,
+    console.warn(name, color, category, memory, RAM, chip, display_size, display_technology,
       battery, front_facing_camera, rear_facing_camera,
       price, discount, product_image, description, qty_in_stock
     )
@@ -28,6 +31,7 @@ const Products = () => {
     event.preventDefault(); 
     const formData = new FormData();
     formData.append('name', name);
+    formData.append('category', category);
     formData.append('color', color);
     formData.append('memory', memory);
     formData.append('RAM', RAM);
@@ -43,12 +47,31 @@ const Products = () => {
     formData.append('description', description);
     formData.append('qty_in_stock', qty_in_stock);
 
-    let result = await fetch ("http://localhost:8000/api/products", {
-      method: 'POST',
-      body: formData
-    });
-    alert("DATA has been saved!")
+    try {
+      const response = await fetch("http://localhost:8000/api/products", {
+        method: 'POST',
+        body: formData
+      });
+    
+      if (response.ok) {
+        toast('Đã thêm sản phẩm vào giỏ hàng!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      } else {
+        throw new Error('Failed to add product to cart');
+      }
+    } catch (error) {
+      alert('Thêm sản phẩm không thành công!', error.message);
+    }    
   }
+
   
 
   return (
@@ -59,6 +82,9 @@ const Products = () => {
         <form>
           <label htmlFor="name">Name:</label>
           <input type="text" placeholder="Name" onChange={(e)=>setName(e.target.value)}/>
+
+          <label htmlFor="category">Category:</label>
+          <input type="text" placeholder="Category (Bắt buộc là: iPhone, iPad, Mac)" onChange={(e)=>setCategory(e.target.value)}/>
 
           <label htmlFor="color">Color:</label>
           <input type="text" placeholder="Color" onChange={(e)=>setColor(e.target.value)} />
@@ -105,6 +131,7 @@ const Products = () => {
           <button onClick={handleSubmit}>Add Product</button>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-.item{
+.item-homepage{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,33 +9,33 @@
     transition: width 0.3s ease;
     height: 100%;
   }
-  .item img{
+  .item-homepage img{
     width: 70%;
     height: 80%;
     object-fit: cover;
     margin-bottom: 20px;
     margin-left: 45px;
   }
-  .item h4{
+  .item-homepage h4{
     color: #2c2c2c;
     margin: 6px 0px;
   }
-  .item-prices{
+  .item-homepage-prices{
     display: flex;
     gap:20px;
   }
-  .item-price-new{
+  .item-homepage-price-new{
     color: #2c2c2c;
     font-size: 18px;
     font-weight: 600;
   }
-  .item-price-old{
+  .item-homepage-price-old{
     color: #8c8c8c;
     font-size:18px;
     font-weight: 500;
     text-decoration: line-through;
   }
-  .item:hover {
+  .item-homepage:hover {
     border-color: #333; 
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 

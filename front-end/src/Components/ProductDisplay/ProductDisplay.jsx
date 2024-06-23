@@ -1,48 +1,134 @@
-import React, {useContext} from 'react'
-import './ProductDisplay.css'
-import { ShopContext } from '../../Context/ShopContext';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import './ProductDisplay.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ProductModal from '../ProductModal/ProductModal';
 
 const ProductDisplay = (props) => {
-  const {product} = props;
-  const {addToCart} = useContext(ShopContext);
+  const { product } = props;
+  const [selectedStorage, setSelectedStorage] = useState('128GB');
+  const [userId, setUserId] = useState(null);
+  const [productId, setProductId] = useState(null);
+  const [qty, setQty] = useState(1);
+  const [totalMoney, setTotalMoney] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  useEffect(() => {
+    console.log('hung', product);
+    const user = JSON.parse(localStorage.getItem("user-info"));
+    if (user) {
+      setUserId(user.id);
+    }
+
+    if (product) {
+      setProductId(product.id);
+      axios.get(`http://localhost:8000/api/products/${product.id}`).then((result) =>
+        setTotalMoney(result.data.price)
+      );
+    }
+  }, [product]);
+
+  const handleStorageClick = (storage) => {
+    setSelectedStorage(storage);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (!userId) {
+      toast.error('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('user_id', userId);
+    formData.append('product_id', productId);
+    formData.append('qty', qty);
+    formData.append('total_money', totalMoney);
+
+    axios.post('http://localhost:8000/api/cart/add', formData)
+      .then((response) => {
+        toast.success('Đã thêm sản phẩm vào giỏ hàng!', {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      });
+  };
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+    if (!isModalOpen) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+  };
 
   return (
     <div className="productdisplay">
       <div className="productdisplay-left">
-        <div className="productdisplay-img-list">
-          <img src={product.image} alt="" class="image_display"/>
-          <img src={product.image} alt="" class="image_display"/>
-          <img src={product.image} alt="" class="image_display"/>
-          <img src={product.image} alt="" class="image_display"/>
-        </div>
         <div className="productdisplay-img">
-          <img className="productdisplay-main-img" src={product.image} alt="" class="main_image_display"/>
+          {product && product.product_image ? (
+            <img
+              className="productdisplay-main-img"
+              src={"http://localhost:8000/" + product.product_image}
+              alt={product.name}
+            />
+          ) : (
+            <p>Product image not available</p>
+          )}
         </div>
       </div>
       <div className="productdisplay-right">
-        <h2>{product.name}</h2>
+        <h1>{product ? product.name : ''}</h1>
         <div className="productdisplay-right-prices">
           <div className="productdisplay-right-price-new">
-            {product.new_price}
+            {product ? ((1 - product.discount / 100) * product.price).toLocaleString() : ''}đ
           </div>
           <div className="productdisplay-right-price-old">
-            {product.old_price}
+            {product ? (product.price).toLocaleString() : ''}đ
           </div>
         </div>
-        <div className="productdisplay-right-color">
-          <h1>Chọn màu</h1>
-          <div className="productdisplay-right-colors">
-            <div>Đen</div>
-            <div>Trắng</div>
-            <div>Đỏ</div>
+        <div className="productdisplay-right-storage">
+          <h3>Dung lượng</h3>
+          <div className="productdisplay-right-storage-options">
+            <button className={selectedStorage === '128GB' ? 'selected' : ''} onClick={() => handleStorageClick('128GB')}>128GB</button>
+            <button className={selectedStorage === '256GB' ? 'selected' : ''} onClick={() => handleStorageClick('256GB')}>256GB</button>
+            <button className={selectedStorage === '512GB' ? 'selected' : ''} onClick={() => handleStorageClick('512GB')}>512GB</button>
           </div>
         </div>
-        <button onClick={()=>{addToCart(product.id)}}>Thêm vào giỏ hàng</button>
-        {/* <p className="productdisplay-right-category"><span>Category: </span>iphone, ipad,mac</p> */}
+        <div className="detail-information">
+          <button className="view-details-btn" onClick={toggleModal}>
+            View Details
+          </button>
+          {isModalOpen && <ProductModal product={product} onClose={toggleModal} />}
+        </div>
+        <button
+          className='addtocart'
+          onClick={handleSubmit}
+        >
+          Thêm vào giỏ hàng
+        </button>
       </div>
+      <ToastContainer />
     </div>
-  )
+  );
 }
 
-export default ProductDisplay
+export default ProductDisplay;

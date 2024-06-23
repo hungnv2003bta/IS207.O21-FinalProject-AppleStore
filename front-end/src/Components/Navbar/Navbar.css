@@ -24,8 +24,7 @@
   font-weight: 400;
 }
 .cart-icon{
-  width:27px;
-  height: 25px;
+  font-size: 28px;
 }
 .bx-search{
   font-size: 24px;
@@ -44,6 +43,8 @@
   border-radius: 10px;
   background-color: #f1356d;
 }
+
+
 .nav-search-cart{
   display: flex;
   align-items: center;
@@ -51,20 +52,15 @@
   cursor: pointer;
 }
 .nav-search-cart button{
-  background-color: #f4f4f4;
+  background-color: #fdfcfd;
   border: none;
   cursor: pointer;
 }
-.nav-menu li:hover{
+.nav-search-cart .bx-search:hover{
   color: #f1356d;
 }
-.nav-search-cart .bx-search:hover{
-  color: #706f6f;
-  width: 27px;
-}
 .cart-icon:hover{
-  background-color: #e0dddd;
-  width: 27px;
+  color: #f1356d;
 }
 .nav-cart-count{
   width: 18px;
@@ -100,18 +96,29 @@
   color: #000000;
 }
 
+.bx-user:hover{
+  color: #f1356d;
+}
+
+.nav-profile {
+  position: relative;
+  cursor: pointer;
+}
+
 .nav-profile .dropdown-menu {
-  margin-top: 5px;
-  background-color: #f8f9fa;
-  border-radius: 1px;
-  border: 1px solid #ccc;
+    top: 100%;
+    background-color: #e9e8e8;
+    border-radius: 1px;
+    width: 140px;
+    border-radius: 5px;
+    z-index: 1;
 }
 
 .nav-profile .dropdown-item {
   display: block;
   padding: 1px 2px; 
   color: #333; 
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #bbbbbb;
 }
 
 .nav-profile .dropdown-item:last-child {
@@ -119,6 +126,10 @@
 }
 
 .nav-profile .dropdown-item:hover {
-  background-color: #e7e7e7;
+  background-color: #c8c6c6;
   color: #000; 
+}
+
+.dropdown-menu.show {
+  display: block;
 }

@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom'
 
 const Homepage = (props) => {
   return (
-    <div className='item'>
-      <Link to={`/product/${props.id}`}><img onClick={window.scrollTo(0,0)} src={props.image} alt="" /></Link>
+    <div className='item-homepage'>
+      <Link to={`/product/${props.id}`}><img onClick={window.scrollTo(0,0)} src={"http://localhost:8000/" + props.product_image} alt="" /></Link>
       <h4>{props.name}</h4>
-      <div className="item-prices">
-        <div className="item-price-new">
-          <strong>{props.new_price}</strong>
+      <div className="item-homepage-prices">
+        <div className="item-homepage-price-new">
+          <strong>{props.discountedPrice}đ</strong>
         </div>
-        <div className="item-price-old">
-          {props.old_price}
+        <div className="item-homepage-price-old">
+          {props.price}đ
         </div>
       </div>
     </div>

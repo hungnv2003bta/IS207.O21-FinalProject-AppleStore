@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductItemsController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\OrderDetailsController;
+use App\Http\Controllers\CartController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -26,6 +27,7 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/admin', 'getAdmin');
     Route::post('/change-password', 'changePassword');
     Route::post('/change-user-password', 'changeUserPassword');
+    Route::post('/forget-password', 'forgetPassword');
 });
 
 Route::get('/products', [ProductController::class, 'getAllProducts']);
@@ -45,5 +47,13 @@ Route::get('orders/{id}', [OrdersController::class, 'show']);
 Route::post('orders', [OrdersController::class, 'store']);
 Route::put('orders/{id}', [OrdersController::class, 'update']);
 Route::delete('orders/{id}', [OrdersController::class, 'destroy']);
+Route::get('orders/user/{userId}', [OrdersController::class, 'getOrderByUserId']);
 
 Route::get('orders/{orderId}/details', [OrderDetailsController::class, 'getOrderDetails']);
+
+Route::controller(CartController::class)->group(function () {
+    Route::post('/cart/add', 'addToCart');
+    Route::get('/cart/items/{id}', 'getCartItems');
+    Route::delete('/cart/remove/{id}', 'removeFromCart');
+    ROute::get('/cart/count/{id}', 'getCartItemsCount');
+});

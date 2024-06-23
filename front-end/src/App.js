@@ -13,12 +13,19 @@ import Search from './Pages/Search';
 import iphone_banner from './Components/Assets/Banner/iphone-banner.webp'
 import mac_banner from './Components/Assets/Banner/mac-banner.jpeg'
 import ipad_banner from './Components/Assets/Banner/ipad-banner.jpeg'
-import Footer from './Components/Footer/Footer';
+import Footer from './Components/Footer/Footer'
+import Delivery from './Pages/Delivery'
+import Pay from './Pages/Pay'
+import Shopping from './Pages/Shopping'
+import In4 from './Pages/In4'
+import Recruitment from './Pages/Recruitment';
 import Protected from './Components/Protected/Protected';
 import Checkout from './Pages/Checkout';
 import ForgetPassword from './Pages/ForgetPassword';
 import UserProfile from './Pages/UserProfile';
 import ChangePassword from './Pages/ChangePassword';
+import ProductDisplay from './Components/ProductDisplay/ProductDisplay';
+import HistoryOrder from './Pages/HistoryOrder';
 
 function App() {
   return (
@@ -31,7 +38,7 @@ function App() {
             <Route path='/iPhone' element={<ShopCategoryIphone banner={iphone_banner} category="iPhone"/>}/>
             <Route path='/iPad' element={<ShopCategoryIpad banner={ipad_banner} category="iPad"/>}/>
             <Route path="product" element={<Product/>}>
-              <Route path=":productId" element={<Product/>}/>
+              <Route path=":productId" element={<ProductDisplay/>}/>
             </Route>
             <Route path='/Search' element={<Search/>}/>
             <Route path='/cart' element={<Protected Cmp={Cart}/>}/>
@@ -41,6 +48,12 @@ function App() {
             <Route path='/forgetpassword' element={<ForgetPassword/>} />
             <Route path='/profile' element={<UserProfile/>} />
             <Route path='/changepassword' element={<ChangePassword/>} />
+            <Route path='/delivery' element={<Delivery/>}/>
+            <Route path='/pay' element={<Pay/>}/>
+            <Route path='/shopping' element={<Shopping/>}/>
+            <Route path='/in4' element={<In4/>}/>
+            <Route path='/recruitment' element={<Recruitment/>}/>
+            <Route path='/historyOrder' element={<HistoryOrder/>} />
           </Routes>
         </div>
       <Footer/>
